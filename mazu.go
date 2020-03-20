@@ -6,12 +6,17 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"net/http"
 	"time"
 )
 
 const (
 	INDEX = "mazu.html"
+)
+
+var (
+	R *rand.Rand
 )
 
 func motd() {
@@ -24,9 +29,14 @@ func MazuHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w,r,INDEX)
 }
 
+func rng() {
+	R = rand.New(rand.NewSource(time.Now().UnixNano()))
+	fmt.Printf("rng: %f\n", R.Float32())
+}
+
 func main() {
 	motd()
-	// rand
+	rng()
 	// cache
 	http.HandleFunc("/", MazuHandler)
 	http.ListenAndServe(":8080", nil)
