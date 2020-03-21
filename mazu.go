@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"math/rand"
 	"net/http"
+	"sync"
 	"sync/atomic"
 	"time"
 )
@@ -19,6 +20,7 @@ const (
 var (
 	R *rand.Rand
 	C uint64
+	M *sync.Map
 )
 
 func motd() {
@@ -45,10 +47,16 @@ func rng() {
 	fmt.Printf("rng: %f\n", R.Float32())
 }
 
+func cache() {
+	M = new(sync.Map)
+	M.Store("0","0|nil")
+	// fmt.Println(M)
+}
+
 func main() {
 	motd()
 	rng()
-	// cache
+	cache()
 	C = 0
 	http.HandleFunc("/", MazuHandler)
 	http.HandleFunc("/s", StatHandler)
