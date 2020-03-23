@@ -15,7 +15,7 @@ import (
 
 const (
 	INDEX = "mazu.html"
-	THREE = "three.js"
+	THREE = "js/three.min.js"
 )
 
 var (

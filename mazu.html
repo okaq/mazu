@@ -10,6 +10,7 @@
     	<style type="text/css">
         	html,body{width:1920px;overflow:auto;height:1080px;margin:0px;border:0px;padding:0px;background-color:rgba(0,0,0,0);}
     	</style>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
     	<script type="text/javascript">
         	// ok
         	console.log("okaq mazu ok!");
@@ -33,8 +34,15 @@ var g = {
 	    g.subs = [dom,net];
 	    g.subs.forEach(function(el){el.init();});
 
+	    // begin
+	    window.setTimeout(g.start, 1000);
+
 	    console.log("load time: " + (window.performance.now() - t0));
-    }
+    },
+	"start": function() {
+		// net.three();
+		console.log(THREE);
+	}
 }
 // xhr
 var net = {
@@ -42,7 +50,7 @@ var net = {
 		// urls
 		net.a = [];
 		net.a[0] = "http://localhost:8080/a";
-		net.a[1] = "http://localhost:8080/b";;
+		net.a[1] = "http://localhost:8080/b";
 	},
 	"three": function() {
 		// async load threejs
