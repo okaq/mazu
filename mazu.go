@@ -15,6 +15,7 @@ import (
 
 const (
 	INDEX = "mazu.html"
+	THREE = "three.js"
 )
 
 var (
@@ -53,6 +54,11 @@ func cache() {
 	// fmt.Println(M)
 }
 
+func ThreeHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)
+	http.ServeFile(w,r,THREE)
+}
+
 func main() {
 	motd()
 	rng()
@@ -60,6 +66,7 @@ func main() {
 	C = 0
 	http.HandleFunc("/", MazuHandler)
 	http.HandleFunc("/s", StatHandler)
+	http.HandleFunc("/b", ThreeHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
