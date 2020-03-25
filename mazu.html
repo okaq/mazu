@@ -51,6 +51,23 @@ var sce = {
 	"full": function() {
 		// full hd screen 1920 x 1080
 		// webgl 2.0 context
+
+		// scene object
+		sce.a = [];
+		sce.a.r = [1920,1080,0,0];
+		sce.a.c = dom.canvas2(sce.a.r);
+		
+		// renderer
+		sce.b = {};
+		sce.b["canvas"] = sce.a.c.can;
+		sce.c = new THREE.WebGLRenderer(sce.b);
+		dom.add(sce.a.c);
+		console.log(sce.c);
+		console.log(sce.c.info);
+
+		// clear color
+		sce.c.setClearColor(new THREE.Color(0xffdd66));
+		sce.c.clearColor();
 	}
 }
 // xhr
