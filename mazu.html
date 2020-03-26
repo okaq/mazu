@@ -44,6 +44,7 @@ var g = {
 		console.log(THREE);
 
 		sce.full();
+		sce.been();
 	}
 }
 // scene
@@ -66,8 +67,18 @@ var sce = {
 		console.log(sce.c.info);
 
 		// clear color
-		sce.c.setClearColor(new THREE.Color(0xffdd66));
+		// sce.c.setClearColor(new THREE.Color(0xffdd66));
+		var c0 = rgba.rand();
 		sce.c.clearColor();
+	},
+	"been": function() {
+		// see to be seen
+		// three scene & cam
+		sce.d = {};
+		sce.d.a = new THREE.Scene();
+		sce.e = {};
+		sce.e.a = new THREE.PerspectiveCamera(75.0, 16.0 / 9.0, 0.1, 1000.0);
+
 	}
 }
 // xhr
