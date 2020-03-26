@@ -45,6 +45,12 @@ var g = {
 
 		sce.full();
 		sce.been();
+
+		// set camera, draw, animate loop
+		window.setTimeout(g.start2, 1000);
+	},
+	"start2": function() {
+		sce.scan();
 	}
 }
 // scene
@@ -68,7 +74,8 @@ var sce = {
 
 		// clear color
 		// sce.c.setClearColor(new THREE.Color(0xffdd66));
-		var c0 = rgba.rand();
+		// var c0 = rgba.rand();
+		sce.c.setClearColor(new THREE.Color(0x111111));
 		sce.c.clearColor();
 	},
 	"been": function() {
@@ -79,6 +86,10 @@ var sce = {
 		sce.e = {};
 		sce.e.a = new THREE.PerspectiveCamera(75.0, 16.0 / 9.0, 0.1, 1000.0);
 
+	},
+	"scan": function() {
+		// set and look at points
+		// store in history buffer
 	}
 }
 // xhr
