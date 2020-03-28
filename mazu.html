@@ -90,6 +90,15 @@ var sce = {
 	"scan": function() {
 		// set and look at points
 		// store in history buffer
+		sce.f = {};
+		// material
+		sce.f.a = new THREE.LineBasicMaterial({0x00ff00});
+		// verts
+		sce.f.b = gen.arrowZ(20.0);
+		// geometry
+		sce.f.c = new THREE.BufferGeometry().setFromPoints(sce.f.b);
+		// line
+		sce.f.d = new THREE.Line(sce.f.c, sce.f.a);
 	}
 }
 // generators
@@ -98,6 +107,17 @@ var gen = {
 		// vertex data for arrow figure
 		// derived from z-coord with fixed shape
 		// or input a bounding box
+	},
+	"arrowZ": function(z0) {
+		var r0 = [];
+		r0[0] = [-10.0,0,z0];
+		r0[1] = [0,10,z0];
+		r0[2] = [10,0,z0];
+		return r0;
+	},
+	"arrowXYZ": function(p0) {
+		// input point struct (x0,y0,z0)
+
 	}
 }
 // xhr
