@@ -51,6 +51,12 @@ var g = {
 	},
 	"start2": function() {
 		sce.scan();
+		// setup camera
+		sce.e.a.position.set(0,0,100);
+		sce.e.a.lookAt(0,0,0);
+		// add line object to scene
+		sce.d.a.add(sce.f.d);
+		ren.scan();
 	}
 }
 // scene
@@ -92,9 +98,9 @@ var sce = {
 		// store in history buffer
 		sce.f = {};
 		// material
-		sce.f.a = new THREE.LineBasicMaterial({0x00ff00});
+		sce.f.a = new THREE.LineBasicMaterial({color:0x00ff00});
 		// verts
-		sce.f.b = gen.arrowZ(20.0);
+		sce.f.b = gen.arrowZ(0.0);
 		// geometry
 		sce.f.c = new THREE.BufferGeometry().setFromPoints(sce.f.b);
 		// line
@@ -110,9 +116,9 @@ var gen = {
 	},
 	"arrowZ": function(z0) {
 		var r0 = [];
-		r0[0] = [-10.0,0,z0];
-		r0[1] = [0,10,z0];
-		r0[2] = [10,0,z0];
+		r0[0] = new THREE.Vector3(-10.0,0,z0);
+		r0[1] = new THREE.Vector3(0,10,z0);
+		r0[2] = new THREE.Vector3(10,0,z0);
 		return r0;
 	},
 	"arrowXYZ": function(p0) {
@@ -133,6 +139,12 @@ var net = {
 		window.fetch(net.a[1])
 			.then(response => {return response.json();})
 			.then(json => {console.log(json);})
+	}
+}
+// render
+var ren = {
+	"scan": function() {
+		sce.c.render(sce.d.a, sce.e.a);	
 	}
 }
    // dom
