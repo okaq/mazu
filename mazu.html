@@ -57,6 +57,17 @@ var g = {
 		// add line object to scene
 		sce.d.a.add(sce.f.d);
 		ren.scan();
+
+		// next up, extend to z-axis infinity
+		window.setTimeout(g.start3, 1000);
+	},
+	"start3": function() {
+		// clear the scene
+		sce.drone();
+		// scene is cleared of all children
+		// and now a single render call
+		// will clear screen to clear color
+		ren.scan();
 	}
 }
 // scene
@@ -105,6 +116,10 @@ var sce = {
 		sce.f.c = new THREE.BufferGeometry().setFromPoints(sce.f.b);
 		// line
 		sce.f.d = new THREE.Line(sce.f.c, sce.f.a);
+	},
+	"drone": function() {
+		// clear scene children in one shot
+		sce.d.a.remove.apply(sce.d.a, sce.d.a.children);
 	}
 }
 // generators
