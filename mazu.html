@@ -68,6 +68,15 @@ var g = {
 		// and now a single render call
 		// will clear screen to clear color
 		ren.scan();
+
+		window.setTimeout(g.start, 1000);
+	},
+	"start4": function() {
+		// setup camera position
+		sce.e.a.position.set(0,0,10);
+		sce.e.a.lookAt(0,0,0);
+		// generate geometry
+
 	}
 }
 // scene
@@ -120,6 +129,19 @@ var sce = {
 	"drone": function() {
 		// clear scene children in one shot
 		sce.d.a.remove.apply(sce.d.a, sce.d.a.children);
+	},
+	"past": function() {
+		// horizons grid
+		sce.g = {};
+		// 99 lines
+		sce.g.n = 99;
+		// materials buffer
+		sce.g.a = [];
+		for (var i = 0; i < sce.g.n; i++) {
+			sce.g.a[i] = new THREE.LineBasicMaterial({color:0x11ee11});
+		}
+		// vert data buffer
+		sce.g.b = [];
 	}
 }
 // generators
