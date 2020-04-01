@@ -76,7 +76,11 @@ var g = {
 		sce.e.a.position.set(0,0,10);
 		sce.e.a.lookAt(0,0,0);
 		// generate geometry
-
+		sce.past();
+		// add line objects to scene
+		sce.past2();
+		// render
+		ren.past();
 	}
 }
 // scene
@@ -150,6 +154,11 @@ var sce = {
 		for (var i = 0; i < sce.g.n; i++) {
 			sce.g.c[i] = new THREE.BufferGeometry().setFromPoints(sce.g.b[i]);
 		}
+	},
+	"past2": function() {
+		for (var i = 0; i < sce.g.n; i++) {
+			sce.d.a.add(sce.g.c[i]);
+		}
 	}
 }
 // generators
@@ -196,6 +205,9 @@ var net = {
 var ren = {
 	"scan": function() {
 		sce.c.render(sce.d.a, sce.e.a);	
+	},
+	"past": functon() {
+		sce.c.render(sce.d.a, sce.e.a);
 	}
 }
    // dom
