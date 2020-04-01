@@ -69,12 +69,13 @@ var g = {
 		// will clear screen to clear color
 		ren.scan();
 
-		window.setTimeout(g.start, 1000);
+		window.setTimeout(g.start4, 1000);
 	},
 	"start4": function() {
 		// setup camera position
-		sce.e.a.position.set(0,0,10);
+		sce.e.a.position.set(0,10,10);
 		sce.e.a.lookAt(0,0,0);
+		// look into infinity
 		// generate geometry
 		sce.past();
 		// add line objects to scene
@@ -154,10 +155,15 @@ var sce = {
 		for (var i = 0; i < sce.g.n; i++) {
 			sce.g.c[i] = new THREE.BufferGeometry().setFromPoints(sce.g.b[i]);
 		}
+		// lines
+		sce.g.d = [];
+		for (var i = 0; i < sce.g.n; i++) {
+			sce.g.d[i] = new THREE.Line(sce.g.c[i], sce.g.a[i]);
+		}
 	},
 	"past2": function() {
 		for (var i = 0; i < sce.g.n; i++) {
-			sce.d.a.add(sce.g.c[i]);
+			sce.d.a.add(sce.g.d[i]);
 		}
 	}
 }
@@ -206,7 +212,7 @@ var ren = {
 	"scan": function() {
 		sce.c.render(sce.d.a, sce.e.a);	
 	},
-	"past": functon() {
+	"past": function() {
 		sce.c.render(sce.d.a, sce.e.a);
 	}
 }
