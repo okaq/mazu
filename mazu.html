@@ -92,7 +92,12 @@ var g = {
 		if (g.tick >= 16) {
 			console.log("anim done");
 			window.clearInterval(g.id);
+			return;
 		}
+		ren.clear2();
+		// tick cam
+		sce.e.a.position.set(0,g.tick*10,g.tick*10);
+		ren.past();
 		g.tick = g.tick + 1;
 	}
 }
@@ -226,6 +231,16 @@ var ren = {
 	},
 	"past": function() {
 		sce.c.render(sce.d.a, sce.e.a);
+	},
+	"clear": function() {
+		// clear to base color
+		sce.c.setClearColor(0x11ee11, 1);
+	},
+	"clear2": function() {
+		// clear to rand color
+		var f0 = (Math.random() * 0xffffff) >>> 0;
+		console.log("rand: " + f0);
+		sce.c.setClearColor(f0,1);
 	}
 }
    // dom
