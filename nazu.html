@@ -42,6 +42,25 @@ var g = {
 	"start": function() {
 		// net.three();
 		console.log(THREE);
+		// prepare three / webgl ground work
+		sce.init();
+	}
+}
+// scene
+var sce = {
+	"init": fuction() {
+		// full hd screen object
+		sce.a = {};
+		sce.a.r = [1920,1080,0,0];
+		sce.a.c = dom.canvas(sce.a.r);
+
+		// three js webgl renderer
+		sce.b = {};
+		sce.b["canvas"] = sce.a.c.can;
+		// additional options 
+		sce.c = new THREE.WebGLRenderer(sce.b);
+		dom.add(sce.a.c);
+		console.log(sce.c,sce.c.info);
 	}
 }
    // dom
