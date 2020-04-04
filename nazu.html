@@ -46,13 +46,21 @@ var g = {
 		sce.init();
 	}
 }
+// xhr
+var net = {
+	"init": function() {
+		// urls
+		net.a = [];
+		net.a[0] = "http:localhost:8080/a";
+	}
+}
 // scene
 var sce = {
-	"init": fuction() {
+	"init": function() {
 		// full hd screen object
 		sce.a = {};
 		sce.a.r = [1920,1080,0,0];
-		sce.a.c = dom.canvas(sce.a.r);
+		sce.a.c = dom.canvas2(sce.a.r);
 
 		// three js webgl renderer
 		sce.b = {};
