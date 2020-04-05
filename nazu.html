@@ -48,6 +48,8 @@ var g = {
 		sce.cam();
 		// create a scene
 		sce.scene();
+		// geometry
+		sce.geo();
 	}
 }
 // xhr
@@ -95,6 +97,20 @@ var sce = {
 
 		// scenes can be pre-populated
 		// and rendered just-in-time
+	},
+	"geo": function() {
+		// the grid world
+		sce.f = {};
+		// material
+		sce.f.a = new THREE.LineBasicMaterial({color:0xaa0000});
+		// vertices from generator
+		sce.f.b = gen.grid();
+		// geometry buffer
+		sce.f.c = new THREE.BufferGeometry().setFromPoints(sce.f.b);
+		// lines
+		sce.f.d = new THREE.Line(sce.f.c, sce.f.a);
+		// geometry hstory buffer
+		sce.f.e = [];
 	}
 }
    // dom
