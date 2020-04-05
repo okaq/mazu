@@ -46,6 +46,8 @@ var g = {
 		sce.init();
 		// set up camera
 		sce.cam();
+		// create a scene
+		sce.scene();
 	}
 }
 // xhr
@@ -81,6 +83,18 @@ var sce = {
 		sce.d.a.lookAt(0,0,0);
 		// history buffer
 		sce.d.b = [];
+
+		console.log(sce.d.a);
+	},
+	"scene": function() {
+		// singleton scene
+		sce.e = {};
+		sce.e.a = new THREE.Scene();
+
+		console.log(sce.e.a);
+
+		// scenes can be pre-populated
+		// and rendered just-in-time
 	}
 }
    // dom
