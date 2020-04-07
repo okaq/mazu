@@ -31,7 +31,7 @@ var g = {
         console.log("start mazu...");
 
 	    // subs
-	    g.subs = [dom,net];
+	    g.subs = [dom,net,gen];
 	    g.subs.forEach(function(el){el.init();});
 
 	    // begin
@@ -115,6 +115,25 @@ var sce = {
 }
 // generators
 var gen = {
+	"init": function() {
+		// global vars
+		gen.a = {};
+		gen.a.dx = 4096;
+		gen.a.dy = 4096;
+		gen.a.px = 32;
+		gen.a.py = 32;
+		gen.a.ex = (gen.a.dx * 2) >>> 0;
+		gen.a.ey = (gen.a.dy * 2) >>> 0;
+		gen.a.nx = (gen.a.ex / gen.a.px) >>> 0;
+		gen.a.ny = (gen.a.ey / gen.a.py) >>> 0;
+		gen.a.nt = (gen.a.nx * gen.a.ny) >>> 0;
+		console.log(gen.a);
+
+		// field (-4096,4096)
+		// grid (32,32)
+		// cells (256,256)
+		// total = 65536
+	},
 	"grid": function() {
 		// collection of horizontal and vertical
 		// straight lines on the floor
