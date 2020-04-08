@@ -50,7 +50,7 @@ var g = {
 		sce.scene();
 		// geometry
 		// sce.geo();
-
+		sce.geo2();
 	}
 }
 // xhr
@@ -121,6 +121,18 @@ var sce = {
 		// keep track of material, geometry, line in buffers
 		// as well as history and current render state
 		sce.g = {};
+		// geo2: separate horizontal and vertical buffers
+
+		// materials
+		sce.g.a = {};
+		sce.g.a.x = [];
+		sce.g.a.z = [];
+		for (var i = 0; i < gen.a.nx; i++) {
+			sce.g.a.x[i] = new THREE.LineBasicMaterial({color:0x00ff00});
+			sce.g.a.z[i] = new THREE.LineBasicMaterial({color:0x00ff00});
+		}
+		// material defined per line, not per line segment
+		// alternative substitute is 2D array [i,j] 
 	}
 }
 // generators
