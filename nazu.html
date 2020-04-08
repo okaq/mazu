@@ -138,13 +138,30 @@ var gen = {
 		// collection of horizontal and vertical
 		// straight lines on the floor
 		// return Vector3 points buffer
+		var r0 = [];
+		var r1 = gen.linesx();
+		r0.push(r1);
+		var r2 = gen.linesy();
+		r0.push(r2);
+		return r0;
 	},
 	"linesx": function() {
 		// horizontal lines to +/- infinity
 		// fixed parameters
+		var r0 = [];
+		for (var i = -gen.a.ex; i < gen.a.ex; i+=gen.a.px) {
+			var z0 = i;
+			for (var j = -gen.a.ex; j <= gen.a.ex j+=gen.a.px) {
+				var x0 = j;
+				var y0 = 0;
+				var v0 = new THREE.Vector3(x0,y0,z0);
+			}
+		}
+		return r0;
 	},
 	"linesy": function() {
 		// vertical lines to complete the grid pattern
+
 	}
 }
    // dom
