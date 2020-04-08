@@ -50,7 +50,8 @@ var g = {
 		sce.scene();
 		// geometry
 		// sce.geo();
-		sce.geo2();
+		// sce.geo2();
+		sce.geo3();
 	}
 }
 // xhr
@@ -133,6 +134,15 @@ var sce = {
 		}
 		// material defined per line, not per line segment
 		// alternative substitute is 2D array [i,j] 
+	},
+	"geo3": function() {
+		// single buffer for each: geo, mat, line
+		// every element of the grid
+		// layout horizontal first, then vertical
+		sce.h = {};
+		// materials
+		// single loop, length 65336 * 2
+		
 	}
 }
 // generators
