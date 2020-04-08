@@ -49,7 +49,8 @@ var g = {
 		// create a scene
 		sce.scene();
 		// geometry
-		sce.geo();
+		// sce.geo();
+
 	}
 }
 // xhr
@@ -111,6 +112,15 @@ var sce = {
 		sce.f.d = new THREE.Line(sce.f.c, sce.f.a);
 		// geometry hstory buffer
 		sce.f.e = [];
+
+		// refactor to create buffers for materials, geometry and lines
+	},
+	"geo2": function() {
+		// the grid world (discrete)
+		// each line segment is a dedicated line object
+		// keep track of material, geometry, line in buffers
+		// as well as history and current render state
+		sce.g = {};
 	}
 }
 // generators
@@ -149,9 +159,9 @@ var gen = {
 		// horizontal lines to +/- infinity
 		// fixed parameters
 		var r0 = [];
-		for (var i = -gen.a.ex; i < gen.a.ex; i+=gen.a.px) {
+		for (var i = -gen.a.ex; i <= gen.a.ex; i+=gen.a.px) {
 			var z0 = i;
-			for (var j = -gen.a.ex; j <= gen.a.ex j+=gen.a.px) {
+			for (var j = -gen.a.ex; j <= gen.a.ex; j+=gen.a.px) {
 				var x0 = j;
 				var y0 = 0;
 				var v0 = new THREE.Vector3(x0,y0,z0);
@@ -162,9 +172,9 @@ var gen = {
 	"linesy": function() {
 		// vertical lines to complete the grid pattern
 		var r0 = [];
-		for (var i = -gen.a.ex; i < gen.a.ex; i+=gen.a.px) {
+		for (var i = -gen.a.ex; i <= gen.a.ex; i+=gen.a.px) {
 			var x0 = i;
-			for (var j = -gen.a.ex; j <= gen.a.ex j+=gen.a.px) {
+			for (var j = -gen.a.ex; j <= gen.a.ex; j+=gen.a.px) {
 				var z0 = j;
 				var y0 = 0;
 				var v0 = new THREE.Vector3(x0,y0,z0);
