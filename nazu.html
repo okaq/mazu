@@ -148,11 +148,23 @@ var sce = {
 		sce.h.c = [];
 		// single loop, length 65336 * 2
 		var n0 = (gen.a.nt) >>> 0;
+		// line range (-4096,4096)
+		// segment length 32
+		// segments per line 256
 		for (var i = 0; i < n0; i++) {
 			// material
-			if (i < gen.a.nt) {
-				// horizontal lines
+			sce.h.a[i] = new THREE.LineBasicMaterial({color:0x00ff00});
+			var p0 = [];
+			// if (i < gen.a.nt) {
+			// debug
+			if (i < (gen.a.nx + 3)) {
+				// horizontal lines, constant y, z
 				// point is (x0, x0+32)
+				// line number
+				var nx = (i / gen.a.nx) >>> 0;
+				// segment number
+				var px = i % gen.a.nx;
+				console.log(nx, px);
 			} else {
 				// vertical lines
 			}
