@@ -164,7 +164,14 @@ var sce = {
 				var nx = (i / gen.a.nx) >>> 0;
 				// segment number
 				var px = i % gen.a.nx;
-				console.log(nx, px);
+				// vertex data
+				var y0 = 0.0;
+				var z0 = -gen.a.dx;
+				var z1 = (nx * gen.a.px);
+				var z2 = (z0 + z1);
+				// warning: floor >>> ops on negative js numbers 
+				// results in int overflow
+				console.log(nx, px, z2);
 			} else {
 				// vertical lines
 			}
