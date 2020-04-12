@@ -147,7 +147,7 @@ var sce = {
 		// lines
 		sce.h.c = [];
 		// single loop, length 65336 * 2
-		var n0 = (gen.a.nt) >>> 0;
+		var n0 = (gen.a.nt * 2) >>> 0;
 		// line range (-4096,4096)
 		// segment length 32
 		// segments per line 256
@@ -174,10 +174,11 @@ var sce = {
 				var x0 = px * gen.a.px;
 				var x1 = x0 + gen.a.px;
 				console.log(nx, px, x0, x1, y0, z2);
-			} else {
+			} else if (i >= gen.a.nt && i < gen.a.nt + (gen.a.nx + 3)) {
 				// vertical lines
-				var nz = (i / gen.a.nx) >>> 0;
-				var pz = i % gen.a.nx;
+	     			var i0 = i - gen.a.nt;
+				var nz = (i0 / gen.a.nx) >>> 0;
+				var pz = i0 % gen.a.nx;
 				// constant x, y
 				var y0 = 0;
 				var x0 = -gen.a.dx;
@@ -186,7 +187,7 @@ var sce = {
 				// line segement points in z
 				var z0 = pz * gen.a.px;
 				var z1 = z0 + gen.a.px;
-				console.log(nz, pz, x2, y0, z1);
+				console.log(nz, pz, x2, y0, z0, z1);
 			}
 			// lines from points vec3
 		}
