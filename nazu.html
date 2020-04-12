@@ -171,9 +171,22 @@ var sce = {
 				var z2 = (z0 + z1);
 				// warning: floor >>> ops on negative js numbers 
 				// results in int overflow
-				console.log(nx, px, z2);
+				var x0 = px * gen.a.px;
+				var x1 = x0 + gen.a.px;
+				console.log(nx, px, x0, x1, y0, z2);
 			} else {
 				// vertical lines
+				var nz = (i / gen.a.nx) >>> 0;
+				var pz = i % gen.a.nx;
+				// constant x, y
+				var y0 = 0;
+				var x0 = -gen.a.dx;
+				var x1 = (nz * gen.a.px);
+				var x2 = (x0 + x1);
+				// line segement points in z
+				var z0 = pz * gen.a.px;
+				var z1 = z0 + gen.a.px;
+				console.log(nz, pz, x2, y0, z1);
 			}
 			// lines from points vec3
 		}
