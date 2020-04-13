@@ -52,6 +52,8 @@ var g = {
 		// sce.geo();
 		// sce.geo2();
 		sce.geo3();
+		// add lines to scene
+		sce.buff();
 	}
 }
 // xhr
@@ -202,6 +204,20 @@ var sce = {
 			// lines from points vec3
 			sce.h.b[i] = new THREE.BufferGeometry().setFromPoints(p0);
 			sce.h.c[i] = new THREE.Line(sce.h.b[i], sce.h.a[i]);
+		}
+	},
+	"buff": function() {
+		// add grid lines to scene
+		var n0 = (gen.a.nt * 2) >>> 0;
+		for (var i = 0; i < n0; i++) {
+			sce.e.a.add(sce.h.c[i]);
+		}
+	},
+	"duff": function() {
+		// remove grid lines from scene
+		var n0 = (gen.a.nt * 2) >>> 0;
+		for (var i = 0; i < n0; i++) {
+			sce.e.a.remove(sce.h.c[i]);
 		}
 	}
 }
