@@ -54,6 +54,8 @@ var g = {
 		sce.geo3();
 		// add lines to scene
 		sce.buff();
+		// render grid
+		ren.grid();
 	}
 }
 // xhr
@@ -84,9 +86,10 @@ var sce = {
 	"cam": function() {
 		// perspective camera
 		sce.d = {};
-		sce.d.a = new THREE.PerspectiveCamera(75.0,16.0/9.0,0.1,100.0);
-		sce.d.a.position.set(0,100,100);
-		sce.d.a.lookAt(0,0,0);
+		sce.d.a = new THREE.PerspectiveCamera(75.0,16.0/9.0,0.1,10000.0);
+		sce.d.a.position.set(0,1000,-1000);
+		sce.d.a.lookAt(0,0,1000);
+
 		// history buffer
 		sce.d.b = [];
 
@@ -279,6 +282,15 @@ var gen = {
 			}
 		}
 		return r0;
+	}
+}
+// render
+var ren = {
+	"grid": function() {
+		sce.c.render(sce.e.a, sce.d.a);
+	     	// render takes a few seconds, 10+
+	     // moire fringe patterns in distance
+	     // and horizontal and vertical planes are mis-aligned
 	}
 }
    // dom
