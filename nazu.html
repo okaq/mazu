@@ -155,7 +155,7 @@ var sce = {
 			// material
 			sce.h.a[i] = new THREE.LineBasicMaterial({color:0x00ff00});
 			var p0 = [];
-			if (i < gen.a.nt * 2) {
+			if (i < gen.a.nt) {
 			// debug
 			// if (i < (gen.a.nx + 3)) {
 				// horizontal lines, constant y, z
@@ -178,7 +178,9 @@ var sce = {
 				var v1 = new THREE.Vector3(x1,y0,z2);
 				p0[0] = v0;
 				p0[1] = v1;
-			} else if (i >= gen.a.nt && i < gen.a.nt + (gen.a.nx + 3)) {
+			} else {
+			// debug
+			// } else if (i >= gen.a.nt && i < gen.a.nt + (gen.a.nx + 3)) {
 				// vertical lines
 	     			var i0 = i - gen.a.nt;
 				var nz = (i0 / gen.a.nx) >>> 0;
@@ -198,6 +200,8 @@ var sce = {
 				p0[1] = v1;
 			}
 			// lines from points vec3
+			sce.h.b[i] = new THREE.BufferGeometry().setFromPoints(p0);
+			sce.h.c[i] = new THREE.Line(sce.h.b[i], sce.h.a[i]);
 		}
 	}
 }
