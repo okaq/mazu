@@ -176,11 +176,16 @@ var sce = {
 				var z2 = (z0 + z1);
 				// warning: floor >>> ops on negative js numbers 
 				// results in int overflow
-				var x0 = px * gen.a.px;
-				var x1 = x0 + gen.a.px;
+				// var x0 = px * gen.a.px;
+				// var x1 = x0 + gen.a.px;
+				// adjust on interval (-4096,4096)
+				var x0 = -gen.a.dx;
+				var x1 = px * gen.a.px;
+				var x2 = x0 + x1;
+				var x3 = x2 + gen.a.px;
 				// console.log(nx, px, x0, x1, y0, z2);
-				var v0 = new THREE.Vector3(x0,y0,z2);
-				var v1 = new THREE.Vector3(x1,y0,z2);
+				var v0 = new THREE.Vector3(x2,y0,z2);
+				var v1 = new THREE.Vector3(x3,y0,z2);
 				p0[0] = v0;
 				p0[1] = v1;
 			} else {
@@ -196,11 +201,15 @@ var sce = {
 				var x1 = (nz * gen.a.px);
 				var x2 = (x0 + x1);
 				// line segement points in z
-				var z0 = pz * gen.a.px;
-				var z1 = z0 + gen.a.px;
+				// var z0 = pz * gen.a.px;
+				// var z1 = z0 + gen.a.px;
+				var z0 = -gen.a.dx;
+				var z1 = pz * gen.a.px;
+				var z2 = z0 + z1;
+				var z3 = z2 + gen.a.px;
 				// console.log(nz, pz, x2, y0, z0, z1);
-				var v0 = new THREE.Vector3(x2,y0,z0);
-				var v1 = new THREE.Vector3(x2,y0,z1);
+				var v0 = new THREE.Vector3(x2,y0,z2);
+				var v1 = new THREE.Vector3(x2,y0,z3);
 				p0[0] = v0;
 				p0[1] = v1;
 			}
