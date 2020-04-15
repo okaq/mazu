@@ -56,6 +56,25 @@ var g = {
 		sce.buff();
 		// render grid
 		ren.grid();
+
+		console.log("starting anim perf loop");
+		window.setTimeout(g.pool, 10000);
+	},
+	"pool": function() {
+		console.log("pool begin...");
+		g.tick = 0;
+		g.id = window.setInterval(g.frame, 10000);
+	},
+	"frame": function() {
+		console.log("tick: " + g.tick);
+		if (g.tick >= 1) {
+			// update cell size
+			// reset loop
+			console.log("anim done");
+			window.clearInterval(g.id);
+			return;
+		}
+		g.tick = g.tick + 1;
 	}
 }
 // xhr
