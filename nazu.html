@@ -62,11 +62,16 @@ var g = {
 	},
 	"pool": function() {
 		console.log("pool begin...");
+		// init scene clear
+		sce.clear();
+		// tock
 		g.tick = 0;
 		g.id = window.setInterval(g.frame, 10000);
 	},
 	"frame": function() {
 		console.log("tick: " + g.tick);
+		// clear
+		ren.clear();
 		if (g.tick >= 1) {
 			// update cell size
 			// reset loop
@@ -250,6 +255,10 @@ var sce = {
 		for (var i = 0; i < n0; i++) {
 			sce.e.a.remove(sce.h.c[i]);
 		}
+	},
+	"clear": function() {
+		// clear eye back buffer
+		sce.i = {};
 	}
 }
 // generators
@@ -319,6 +328,11 @@ var ren = {
 	     	// render takes a few seconds, 10+
 	     // moire fringe patterns in distance
 	     // and horizontal and vertical planes are mis-aligned
+	},
+	"clear": function() {
+	     // easy clear method
+	     // create front and back buffers
+	     // clear colors black (default) and white
 	}
 }
    // dom
