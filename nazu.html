@@ -259,6 +259,7 @@ var sce = {
 	"clear": function() {
 		// clear eye back buffer
 		sce.i = {};
+	     sce.i.a = new THREE.Scene();
 	}
 }
 // generators
@@ -333,6 +334,9 @@ var ren = {
 	     // easy clear method
 	     // create front and back buffers
 	     // clear colors black (default) and white
+	     sce.c.setClearColor(new THREE.Color(0xffffff));
+	     sce.c.clearColor();
+	     sce.c.render(sce.i.a, sce.d.a);
 	}
 }
    // dom
