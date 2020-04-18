@@ -44,6 +44,7 @@ var g = {
 		console.log(THREE);
 		// prepare three / webgl ground work
 		sce.init();
+		sce.cam();
 
 		// pre-populate the grid geometry and line segment objects
 		// one for each logical scene
@@ -68,6 +69,25 @@ var sce = {
 		// 3js webgl renderer
 		sce.a.w = new THREE.WebGLRenderer({canvas:sce.a.c.can});
 		console.log(sce.a.w.info);
+	},
+	"cam": function() {
+		// prespective camera
+		sce,b = {};
+		// settings
+		sce.b.a = [];
+		// history
+		sce.b.d = [];
+		// FOV
+		sce.b.a[0] = 75.0;
+		// aspect ratio
+		sce.b.a[1] = 1920.0 / 1080.0;
+		// near plane
+		sce.b.a[2] = 0.1;
+		// far plane
+		sce.b.a[3] = 1001.0;
+		sce.b.d.push(sce.b.a);
+		sce.b.c = new THREE.PrespectiveCamera(sce.b.a[0],sce.b.a[1],sce.b.a[2],sce.b.a[3]);
+		console.log(sce.b);
 	}
 }
 // generators
