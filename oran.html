@@ -95,7 +95,15 @@ var gen = {
 	"init": function() {
 		// grid world globals
 		gen.a = {};
+		// outer limits of grid interval (-4096,4096)
+		gen.a.dx0 = -4096;
+		gen.a.dy0 = -4096;
+		gen.a.dx1 = 4096;
+		gen.a.dy1 = 4096;
+		gen.a.dx2 = gen.a.dx1 - gen.a.dx0;
+		gen.a.dy2 = gen.a.dy1 - gen.a.dy0;
 
+		console.log(gen.a);
 	}
 }
 // xhr
