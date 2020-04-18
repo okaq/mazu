@@ -63,7 +63,11 @@ var sce = {
 	"init": function() {
 		// full screen hd 1920 x 1080
 		sce.a = {};
-
+		sce.a.r = [1920,1080,0,0];
+		sce.a.c = dom.canvas2(sce.a.r);
+		// 3js webgl renderer
+		sce.a.w = new THREE.WebGLRenderer({canvas:sce.a.c.can});
+		console.log(sce.a.w.info);
 	}
 }
 // generators
