@@ -72,7 +72,7 @@ var sce = {
 	},
 	"cam": function() {
 		// prespective camera
-		sce,b = {};
+		sce.b = {};
 		// settings
 		sce.b.a = [];
 		// history
@@ -86,7 +86,7 @@ var sce = {
 		// far plane
 		sce.b.a[3] = 1001.0;
 		sce.b.d.push(sce.b.a);
-		sce.b.c = new THREE.PrespectiveCamera(sce.b.a[0],sce.b.a[1],sce.b.a[2],sce.b.a[3]);
+		sce.b.c = new THREE.PerspectiveCamera(sce.b.a[0],sce.b.a[1],sce.b.a[2],sce.b.a[3]);
 		console.log(sce.b);
 	}
 }
@@ -102,6 +102,10 @@ var gen = {
 		gen.a.dy1 = 4096;
 		gen.a.dx2 = gen.a.dx1 - gen.a.dx0;
 		gen.a.dy2 = gen.a.dy1 - gen.a.dy0;
+		// grid line segment lengths
+		gen.a.s = [32,64,128,256,512,1024];
+		// tick index
+		gen.a.t = 0;
 
 		console.log(gen.a);
 	}

@@ -20,7 +20,7 @@ var (
 
 func rng() {
 	t0 := time.Now().UnixNano()
-	s0 := rand.NewSource(t)
+	s0 := rand.NewSource(t0)
 	R = rand.New(s0)
 	fmt.Printf("random: %f\n", R.Float32())
 }
