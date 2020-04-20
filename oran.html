@@ -46,6 +46,12 @@ var g = {
 		sce.init();
 		sce.cam();
 
+		// timed generators
+		var t0 = window.performance.now();
+		gen.geo();
+		var t1 = window.performance.now() - t0;
+		console.log("gen split: " + t1);
+
 		// pre-populate the grid geometry and line segment objects
 		// one for each logical scene
 		// dedicated grid class
