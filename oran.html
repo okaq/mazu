@@ -121,6 +121,8 @@ var gen = {
 		gen.b = [];
 		// point set data buffers
 		gen.c = [];
+		// seg count totals
+		gen.d = [];
 
 		// loop over segment size array
 		for (var i = 0; i < gen.a.s.length; i++) {
@@ -130,12 +132,31 @@ var gen = {
 			var ny = gen.a.dy2 / gen.a.s[i];
 			var nt = nx * ny;
 			var nt2 = 2 * nt;
+			gen.d.push(nt2);
 			// debug
 			console.log("total length: " + gen.a.dx2);
 	     		console.log("segments size: " + gen.a.s[i]);
 			console.log("segs per line: " + nx);
 			console.log("segs horz: " + nt);
 			console.log("grid total: " + nt2);
+		}
+		console.log(gen.d);
+
+		// loop over totals
+		for (var i = 0; i < gen.d.length; i++ {
+			// first half is vertical
+			// constant x
+			// second half is horizontal
+			// constant z
+	     		var t0 = gen.d[i];
+	     		var t1 = t0 / 2;
+	     		for (var j = 0; j < t0; j++) {
+	    			if (j < t1) {
+	     				// vertical
+	     			} else {
+	     				// horizontal
+	     			}
+	     		}
 		}
 	}
 }
