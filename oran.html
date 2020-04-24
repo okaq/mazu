@@ -126,12 +126,14 @@ var gen = {
 
 		// loop over segment size array
 		for (var i = 0; i < gen.a.s.length; i++) {
-			gen.b[i] = [];
+			// gen.b[i] = [];
 			gen.c[i] = [];
 			var nx = gen.a.dx2 / gen.a.s[i];
 			var ny = gen.a.dy2 / gen.a.s[i];
 			var nt = nx * ny;
 			var nt2 = 2 * nt;
+			var n0 = [nx,ny,nt,nt2];
+			gen.b.push(n0);
 			gen.d.push(nt2);
 			// debug
 			console.log("total length: " + gen.a.dx2);
@@ -143,7 +145,7 @@ var gen = {
 		console.log(gen.d);
 
 		// loop over totals
-		for (var i = 0; i < gen.d.length; i++ {
+		for (var i = 0; i < gen.d.length; i++) {
 			// first half is vertical
 			// constant x
 			// second half is horizontal
@@ -153,6 +155,7 @@ var gen = {
 	     		for (var j = 0; j < t0; j++) {
 	    			if (j < t1) {
 	     				// vertical
+					var x0 = j / 
 	     			} else {
 	     				// horizontal
 	     			}
