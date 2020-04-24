@@ -155,7 +155,11 @@ var gen = {
 	     		for (var j = 0; j < t0; j++) {
 	    			if (j < t1) {
 	     				// vertical
-					var x0 = j / 
+					var x0 = j / gen.b[i][0];
+					var z0 = j % gen.b[i][0];
+					var z1 = z0 + gen.a.s[i];
+					var y0 = 0;
+					// vectors from points
 	     			} else {
 	     				// horizontal
 	     			}
