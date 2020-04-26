@@ -44,6 +44,12 @@ var g = {
 		console.log(THREE);
 
 		g.motd();
+
+		window.setTimeout(g.start2, 1000);
+	},
+	"start2": function() {
+		console.log("create scene");
+		sce.bkgd();
 	},
 	"motd": function() {
 		console.log("welcome to okaq mazu pola");
@@ -70,6 +76,22 @@ var sce = {
 		sce.b = {};
 		// save button
 		sce.c = {};
+	},
+	"bkgd": function() {
+		sce.a.r = [1920,1080,0,0];
+		sce.a.c = dom.canvas(sce.a.r);
+		dom.add(sce.a.c);
+		sce.a.d = [0,0,0,1.0];
+		// click events
+		sce.a.c.can.dataset.x = "bkgd";
+		// sce.a.c.can.addEventListener("click", sce.click, false);
+		sce.a.c.can.addEventListener("dblclick", sce.click2, false);
+	},
+	"click": function(e) {
+		console.log(e);
+	},
+	"click2": function(e) {
+		console.log(e);
 	}
 }
    // dom
