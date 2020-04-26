@@ -1,8 +1,75 @@
 <!DOCTYPE html>
-ok okaq mazu pola go!
-<br />
-vector art draw web application
-<br />
-Apr 26 2020 12:00:01 UTC
+<html>
+	<head id="zeta">
+    	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    	<meta name="viewport" content="width=1920,height=1080,initial-scale=1" />
+    	<meta name="source" content="https://github.com/okaq/giri" />
+    	<meta name="author" content="AQ<aq@okaq.com>" />
+    	<meta name="date" content="2020-04-26" />
+    	<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAS0lEQVR4nGJxy9nMQEvARFPTRy0YtWBoWMCCR25n0WOSzHLvk8UUHPpBNGrBqAWjFoxaMCIswFcfYC3fSQVDP4hGLRh4CwABAAD//7qVBZ69uSXFAAAAAElFTkSuQmCC" />
+    	<style type="text/css">
+        	html,body{width:1920px;overflow:auto;height:1080px;margin:0px;border:0px;padding:0px;background-color:rgba(0,0,0,0);}
+    	</style>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+    	<script type="text/javascript">
+        	// ok
+        	console.log("okaq mazu ok!");
+        	// async load
+        	(function() {
+            		var a = {
+                		"load": function(e) {
+                    			console.log(e);
+                    			g.init();
+                		}
+            		}
+            		document.addEventListener("DOMContentLoaded", a.load, false);
+        	})();
+// game
+var g = {
+    "init": function() {
+        var t0 = window.performance.now();
+        console.log("start mazu...");
 
+	    // subs
+	    g.subs = [dom,net,sce];
+	    g.subs.forEach(function(el){el.init();});
+
+	    // begin
+	    window.setTimeout(g.start, 1000);
+
+	    console.log("load time: " + (window.performance.now() - t0));
+    },
+	"start": function() {
+		// net.three();
+		console.log(THREE);
+
+		g.motd();
+	},
+	"motd": function() {
+		console.log("welcome to okaq mazu pola");
+		console.log("vector art draw web tool");
+		console.log("created by aq@okaq.com");
+		console.log(Date.now().toStringUTC());
+	}
+}
+// xhr
+var net = {
+	"init": function() {
+		// urls
+		net.a = [];
+		net.a[0] = "http://localhost:8080/
+	}
+}
+// scene
+var sce = {
+	"init": function() {
+		// composable add /remove ux elements
+		// bkgd
+		sce.a = {};
+		// draw pane
+		sce.b = {};
+		// save button
+		sce.c = {};
+	}
+}
 
