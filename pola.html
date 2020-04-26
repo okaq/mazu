@@ -51,6 +51,13 @@ var g = {
 		console.log("create scene");
 		sce.bkgd();
 		sce.pane();
+		sce.save();
+
+		window.setTimeout(g.start3, 1000);
+	},
+	"start3": function() {
+		console.log("render test");
+		ren.test();
 	},
 	"motd": function() {
 		console.log("welcome to okaq mazu pola");
@@ -91,7 +98,7 @@ var sce = {
 	"pane": function() {
 		sce.b.r = [1024,1024,448,28];
 		sce.b.c = dom.canvas(sce.b.r);
-		dom.add(sce.b.r);
+		dom.add(sce.b.c);
 		sce.b.d = [0,0,0,1.0];
 		// double click
 		sce.b.c.can.dataset.x = "pane";
@@ -100,7 +107,7 @@ var sce = {
 	"save": function() {
 		sce.c.r = [64,64,192,56];
 		sce.c.c = dom.canvas(sce.c.r);
-		dom.add(sce.c.r);
+		dom.add(sce.c.c);
 		sce.c.d = [0,0,0,1.0];
 		// click handler
 		sce.c.c.can.dataset.x = "save";
@@ -111,6 +118,22 @@ var sce = {
 	},
 	"click2": function(e) {
 		console.log(e);
+	}
+}
+// render
+var ren = {
+	"test": function() {
+		ren.a = [sce.a, sce.b, sce.c];
+		ren.zaz(ren.clear);
+	},
+	"zaz": function(f0) {
+		ren.a.forEach(f0);
+	},
+	"clear": function(c0) {
+		var c1 = c0.c;
+		// console.log(c0,c1,c1.can,c1.con);
+		c1.con.fillStyle = rgba.css(c0.d);
+		c1.con.fillRect(0,0,c1.can.width,c1.can.height);
 	}
 }
    // dom
