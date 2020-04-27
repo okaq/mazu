@@ -68,6 +68,7 @@ var g = {
 	},
 	"start5": function() {
 		console.log("ping recieved from server");
+		console.log("start: " + g.ping0 + " stop: " g.ping1);
 		var t0 = g.ping1 - g.ping0;
 		console.log("ping time: " + t0);
 	},
@@ -84,9 +85,18 @@ var net = {
 		// urls
 		net.a = [];
 		net.a[0] = "http://localhost:8080/a";
+		net.a[1] = "http://localhost:8080/b";
 	},
 	"ping": function() {
 		// fetch
+		window.fetch(net.a[0])
+			.then((res) => {
+				return res.text();
+			})
+			.then((txt) => {
+				g.ping1 = txt;
+				g.start5();
+			})
 	}
 }
 // scene
