@@ -58,6 +58,18 @@ var g = {
 	"start3": function() {
 		console.log("render test");
 		ren.test();
+
+		window.setTimeout(g.start4, 1000);
+	},
+	"start4": function() {
+		console.log("net ping");
+		g.ping0 = window.performance.now();
+		net.ping();
+	},
+	"start5": function() {
+		console.log("ping recieved from server");
+		var t0 = g.ping1 - g.ping0;
+		console.log("ping time: " + t0);
 	},
 	"motd": function() {
 		console.log("welcome to okaq mazu pola");
@@ -72,6 +84,9 @@ var net = {
 		// urls
 		net.a = [];
 		net.a[0] = "http://localhost:8080/a";
+	},
+	"ping": function() {
+		// fetch
 	}
 }
 // scene
