@@ -63,14 +63,20 @@ var g = {
 	},
 	"start4": function() {
 		console.log("net ping");
-		g.ping0 = window.performance.now();
+		// g.ping0 = window.performance.now();
+		g.ping0 = Date.now();
 		net.ping();
 	},
 	"start5": function() {
 		console.log("ping recieved from server");
-		console.log("start: " + g.ping0 + " stop: " g.ping1);
-		var t0 = g.ping1 - g.ping0;
-		console.log("ping time: " + t0);
+		console.log("start: " + g.ping0 + " stop: " + g.ping1);
+		var t0 = g.ping1.toString();
+		var t1 = t0.substring(0,g.ping0.toString().length);
+		var t2 = parseInt(t1) - g.ping0;
+		// var t0 = g.ping1 - g.ping0;
+		// console.log(t1);
+		console.log("ping time: " + t2);
+		// ping time about 488ms
 	},
 	"motd": function() {
 		console.log("welcome to okaq mazu pola");
@@ -82,10 +88,12 @@ var g = {
 // xhr
 var net = {
 	"init": function() {
+		// ip
+		net.ip = "35.245.123.147:8080";
 		// urls
 		net.a = [];
-		net.a[0] = "http://localhost:8080/a";
-		net.a[1] = "http://localhost:8080/b";
+		net.a[0] = "http://" + net.ip + "/a";
+		net.a[1] = "http://" + net.ip + "/b";
 	},
 	"ping": function() {
 		// fetch

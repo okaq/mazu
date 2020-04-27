@@ -23,9 +23,17 @@ func PolaHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w,r,INDEX)
 }
 
+func PingHandler(w http.ResponseWriter, r *http.Request) {
+	// time is of essence
+	t0 := time.Now().UnixNano()
+	w.Header().Set("Content-type", "text/plain")
+	w.Write([]byte(fmt.Sprintf("%d", t0)))
+}
+
 func main() {
 	motd()
 	http.HandleFunc("/", PolaHandler)
+	http.HandleFunc("/a", PingHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
