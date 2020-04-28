@@ -64,19 +64,20 @@ var g = {
 	"start4": function() {
 		console.log("net ping");
 		// g.ping0 = window.performance.now();
-		g.ping0 = Date.now();
+		// g.ping0 = Date.now();
 		net.ping();
 	},
 	"start5": function() {
 		console.log("ping recieved from server");
 		console.log("start: " + g.ping0 + " stop: " + g.ping1);
-		var t0 = g.ping1.toString();
-		var t1 = t0.substring(0,g.ping0.toString().length);
-		var t2 = parseInt(t1) - g.ping0;
-		// var t0 = g.ping1 - g.ping0;
+		// var t0 = g.ping1.toString();
+		// var t1 = t0.substring(0,g.ping0.toString().length);
+		// var t2 = parseInt(t1) - g.ping0;
+		var t0 = g.ping1 - g.ping0;
 		// console.log(t1);
-		console.log("ping time: " + t2);
-		// ping time about 488ms
+		console.log("ping time: " + t0);
+		// ping time about 488ms, after processing response
+		// ping time 100ms yes!
 	},
 	"motd": function() {
 		console.log("welcome to okaq mazu pola");
@@ -89,7 +90,7 @@ var g = {
 var net = {
 	"init": function() {
 		// ip
-		net.ip = "35.245.123.147:8080";
+		net.ip = "35.245.133.147:8080";
 		// urls
 		net.a = [];
 		net.a[0] = "http://" + net.ip + "/a";
@@ -97,12 +98,15 @@ var net = {
 	},
 	"ping": function() {
 		// fetch
+		g.ping0 = window.performance.now();
 		window.fetch(net.a[0])
 			.then((res) => {
+				// immediate time split, high res, pre processing
+				g.ping1 = window.performance.now();
 				return res.text();
 			})
 			.then((txt) => {
-				g.ping1 = txt;
+				g.ping2 = txt;
 				g.start5();
 			})
 	}
