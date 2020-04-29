@@ -169,6 +169,8 @@ var sce = {
 		// attach mouse move handler to canvas draw pane
 		sce.b.c.can.addEventListener("mousemove", sce.mouse, false);
 		sce.b.c.can.removeEventListener("dblclick", sce.click2);
+		sce.b.c.can.addEventListener("dblclick", sce.click3, false);
+		sce.b.c.can.addEventListener("clcik", sce.click4, false);
 		// setup drawing state
 		sce.b.e = 0;
 		// drawing states enum
@@ -180,7 +182,8 @@ var sce = {
 		// reload page to create new
 	},
 	"mouse": function(e) {
-		console.log("mouse x: " + e.offsetX + " y: " + e.offsetY);
+		// console.log("mouse x: " + e.offsetX + " y: " + e.offsetY);
+		sce.b.f = [e.offsetX,e.offsetY];
 	},
 	"data": function() {
 		// setup data buffers
@@ -196,6 +199,19 @@ var sce = {
 		sce.b.h = [];
 		sce.b.h[0] = 0;
 		sce.b.h[1] = 0;
+		// global point set buffer
+		sce.b.j = [];
+	},
+	"click3": function(e) {
+		// double click end segment
+		if (sce.e == 1) {
+			// first segment double click
+		}
+	},
+	"click4": function(e) {
+		// add current mouse point to set
+		sce.b.j.push(sce.b.f);
+		console.log(sce.b.j);
 	}
 }
 // render
