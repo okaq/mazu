@@ -170,7 +170,7 @@ var sce = {
 		sce.b.c.can.addEventListener("mousemove", sce.mouse, false);
 		sce.b.c.can.removeEventListener("dblclick", sce.click2);
 		sce.b.c.can.addEventListener("dblclick", sce.click3, false);
-		sce.b.c.can.addEventListener("clcik", sce.click4, false);
+		sce.b.c.can.addEventListener("click", sce.click4, false);
 		// setup drawing state
 		sce.b.e = 0;
 		// drawing states enum
@@ -210,7 +210,22 @@ var sce = {
 	},
 	"click4": function(e) {
 		// add current mouse point to set
-		sce.b.j.push(sce.b.f);
+		if (sce.b.e == 0) {
+			// origin point
+			sce.b.g = sce.b.f;
+			// advance state
+			sce.b.e = 1;
+		}
+		if (sce.b.e == 1) {
+			// line segment done, add to points set
+			sce.b.h = sce.b.f;
+			sce.b.j.push(sce.b.g);
+			sce.b.j.push(sce.b.h);
+			// start new segment
+			sce.b.g = sce.b.f;
+			sce.b.h = [0,0];
+		}
+		// sce.b.j.push(sce.b.f);
 		console.log(sce.b.j);
 	}
 }
