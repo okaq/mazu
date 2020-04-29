@@ -84,6 +84,8 @@ var g = {
 	"start6": function() {
 		console.log("attaching mouse move handlers");
 		sce.move();
+		console.log("creating data buffers");
+		sce.data();
 		console.log("ready to start drawing!");
 	},
 	"motd": function() {
@@ -179,6 +181,21 @@ var sce = {
 	},
 	"mouse": function(e) {
 		console.log("mouse x: " + e.offsetX + " y: " + e.offsetY);
+	},
+	"data": function() {
+		// setup data buffers
+		// current mouse position [x,y]
+		sce.b.f = [];
+		sce.b.f[0] = 0;
+		sce.b.f[1] = 0;
+		// current line segment start
+		sce.b.g = [];
+		sce.b.g[0] = 0;
+		sce.b.g[1] = 0;
+		// current line segment end
+		sce.b.h = [];
+		sce.b.h[0] = 0;
+		sce.b.h[1] = 0;
 	}
 }
 // render
