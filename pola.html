@@ -82,8 +82,9 @@ var g = {
 		window.setTimeout(g.start6, 1000);
 	},
 	"start6": function() {
-		console.log("ready to start drawing!");
+		console.log("attaching mouse move handlers");
 		sce.move();
+		console.log("ready to start drawing!");
 	},
 	"motd": function() {
 		console.log("welcome to okaq mazu pola");
@@ -165,6 +166,16 @@ var sce = {
 	"move": function() {
 		// attach mouse move handler to canvas draw pane
 		sce.b.c.can.addEventListener("mousemove", sce.mouse, false);
+		sce.b.c.can.removeEventListener("dblclick", sce.click2);
+		// setup drawing state
+		sce.b.e = 0;
+		// drawing states enum
+		// 0: pre-start, waiting for initial click
+		// 1: first line segment started
+		// 2: line segment terminated, waiting for next click
+		// 3: next line segment started
+		// keep cycling between states 2 and 3, until save clicked
+		// reload page to create new
 	},
 	"mouse": function(e) {
 		console.log("mouse x: " + e.offsetX + " y: " + e.offsetY);
