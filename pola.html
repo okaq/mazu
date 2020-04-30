@@ -250,13 +250,29 @@ var sce = {
 			return;
 		}
 		if (sce.b.e == 1) {
-			if (sce.b.f == sce.b.j[sce.b.j.length-1]) {
-				console.log("double click detected!");
-				return;
+			// if (sce.b.f == sce.b.j[sce.b.j.length-1]) {
+			// 	console.log("double click detected!");
+			// 	return;
+			// }
+			if (sce.b.j.length >= 0) {
+				var p0 = sce.b.j[sce.b.j.length-1][1];
+				if (sce.b.f == p0) {
+					console.log("double click detected!");
+					return;
+				}
 			}
-			sce.g.h = sce.b.f;
+			sce.b.h = sce.b.f;
 			sce.b.j.push([sce.b.g,sce.b.h]);
+			sce.b.g = sce.b.h;
+			sce.b.h = [0,0];
 		}
+		if (sce.b.e == 2) {
+			sce.b.g = sce.b.f;
+			sce.b.h = [0,0];
+			sce.b.e = 1;
+			return;
+		}
+		console.log(sce.b.j);
 	}
 }
 // render
