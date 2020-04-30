@@ -170,7 +170,7 @@ var sce = {
 		sce.b.c.can.addEventListener("mousemove", sce.mouse, false);
 		sce.b.c.can.removeEventListener("dblclick", sce.click2);
 		sce.b.c.can.addEventListener("dblclick", sce.click3, false);
-		sce.b.c.can.addEventListener("click", sce.click4, false);
+		sce.b.c.can.addEventListener("click", sce.click5, false);
 		// setup drawing state
 		sce.b.e = 0;
 		// drawing states enum
@@ -180,6 +180,9 @@ var sce = {
 		// 3: next line segment started
 		// keep cycling between states 2 and 3, until save clicked
 		// reload page to create new
+
+		// new states enum
+		// 0: init, 1: segments, 2: double click, new segmenta
 	},
 	"mouse": function(e) {
 		// console.log("mouse x: " + e.offsetX + " y: " + e.offsetY);
@@ -206,6 +209,7 @@ var sce = {
 		// double click end segment
 		if (sce.e == 1) {
 			// first segment double click
+			sce.b.e = 2;
 		}
 	},
 	"click4": function(e) {
@@ -220,7 +224,8 @@ var sce = {
 			return;
 		}
 		if (sce.b.e == 1) {
-			if (sce.b.f == sce.b.j[sce.b.j.length-1]) {
+			// if (sce.b.f == sce.b.j[sce.b.j.length-1]) {
+			if (sce.b.h == sce.b.f) {
 				console.log("double click detected");
 				return;
 			}
@@ -229,11 +234,29 @@ var sce = {
 			// sce.b.j.push(sce.b.g);
 			sce.b.j.push(sce.b.h);
 			// start new segment
-			sce.b.g = sce.b.f;
-			sce.b.h = [0,0];
+			// sce.b.g = sce.b.f;
+			// sce.b.h = [0,0];
+		}
+		if (sce.b.e == 2) {
+			
 		}
 		// sce.b.j.push(sce.b.f);
 		console.log(sce.b.j);
+	},
+	"click5": function(e) {
+		if (sce.b.e == 0) {
+			sce.b.g = sce.b.f;
+			sce.b.e = 1;
+			return;
+		}
+		if (sce.b.e == 1) {
+			if (sce.b.f == sce.b.j[sce.b.j.length-1]) {
+				console.log("double click detected!");
+				return;
+			}
+			sce.g.h = sce.b.f;
+			sce.b.j.push([sce.b.g,sce.b.h]);
+		}
 	}
 }
 // render
