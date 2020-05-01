@@ -254,10 +254,12 @@ var sce = {
 			// 	console.log("double click detected!");
 			// 	return;
 			// }
-			if (sce.b.j.length >= 0) {
+			if (sce.b.j.length > 0) {
+				console.log(sce.b.j);
 				var p0 = sce.b.j[sce.b.j.length-1][1];
 				if (sce.b.f == p0) {
 					console.log("double click detected!");
+					sce.b.e = 2;
 					return;
 				}
 			}
