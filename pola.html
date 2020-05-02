@@ -86,6 +86,7 @@ var g = {
 		sce.move();
 		console.log("creating data buffers");
 		sce.data();
+		sce.pine();
 		console.log("ready to start drawing!");
 	},
 	"motd": function() {
@@ -187,6 +188,7 @@ var sce = {
 	"mouse": function(e) {
 		// console.log("mouse x: " + e.offsetX + " y: " + e.offsetY);
 		sce.b.f = [e.offsetX,e.offsetY];
+		ren.pine();
 	},
 	"data": function() {
 		// setup data buffers
@@ -275,6 +277,10 @@ var sce = {
 			return;
 		}
 		console.log(sce.b.j);
+	},
+	"pine": function() {
+		// setup a mouse position console
+		sce.b.k = [256,128,1700,0];
 	}
 }
 // render
@@ -291,6 +297,18 @@ var ren = {
 		// console.log(c0,c1,c1.can,c1.con);
 		c1.con.fillStyle = rgba.css(c0.d);
 		c1.con.fillRect(0,0,c1.can.width,c1.can.height);
+	},
+	"pine": function() {
+		// string
+		var s0 = "x: " + sce.b.f[0];
+		var s1 = "y: " + sce.b.f[1];
+		// clear
+		sce.a.c.con.fillStyle = rgba.css([0,0,0,1.0]);
+		sce.a.c.con.fillRect(sce.b.k[2],sce.b.k[3],sce.b.k[0],sce.b.k[1]);
+		sce.a.c.con.fillStyle = rgba.css([0,255,255,1.0]);
+		sce.a.c.con.font = "32px Droid Sans";
+		sce.a.c.con.fillText(s0,sce.b.k[2]+64,sce.b.k[3]+40);
+		sce.a.c.con.fillText(s1,sce.b.k[2]+64,sce.b.k[3]+90);
 	}
 }
    // dom
