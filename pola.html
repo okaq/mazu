@@ -249,6 +249,7 @@ var sce = {
 		if (sce.b.e == 0) {
 			sce.b.g = sce.b.f;
 			sce.b.e = 1;
+			ren.dot();
 			return;
 		}
 		if (sce.b.e == 1) {
@@ -309,6 +310,10 @@ var ren = {
 		sce.a.c.con.font = "32px Droid Sans";
 		sce.a.c.con.fillText(s0,sce.b.k[2]+64,sce.b.k[3]+40);
 		sce.a.c.con.fillText(s1,sce.b.k[2]+64,sce.b.k[3]+90);
+	},
+	"dot": function() {
+		sce.b.c.con.fillStyle = rgba.css([0,255,0,1.0]);
+		sce.b.c.con.fillRect(sce.b.g[0]-2,sce.b.g[1]-2,4,4);
 	}
 }
    // dom
