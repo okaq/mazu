@@ -249,7 +249,8 @@ var sce = {
 		if (sce.b.e == 0) {
 			sce.b.g = sce.b.f;
 			sce.b.e = 1;
-			ren.dot();
+			// ren.dot();
+			ren.dot1();
 			return;
 		}
 		if (sce.b.e == 1) {
@@ -314,6 +315,12 @@ var ren = {
 	"dot": function() {
 		sce.b.c.con.fillStyle = rgba.css([0,255,0,1.0]);
 		sce.b.c.con.fillRect(sce.b.g[0]-2,sce.b.g[1]-2,4,4);
+	},
+	"dot1": function() {
+		sce.b.c.con.fillStyle = rgba.css([0,255,0,1.0]);
+		sce.b.c.con.beginPath();
+		sce.b.c.con.arc(sce.b.g[0],sce.b.g[1],2,0,2*Math.PI);
+		sce.b.c.con.fill();
 	}
 }
    // dom
