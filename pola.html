@@ -162,6 +162,8 @@ var sce = {
 	},
 	"click": function(e) {
 		console.log(e);
+		// save, detach handlers on pane
+		console.log(sce.b.j);
 	},
 	"click2": function(e) {
 		console.log(e);
@@ -259,7 +261,7 @@ var sce = {
 			// 	return;
 			// }
 			if (sce.b.j.length > 0) {
-				console.log(sce.b.j);
+				// console.log(sce.b.j);
 				var p0 = sce.b.j[sce.b.j.length-1][1];
 				if (sce.b.f == p0) {
 					console.log("double click detected!");
@@ -268,7 +270,9 @@ var sce = {
 				}
 			}
 			sce.b.h = sce.b.f;
-			sce.b.j.push([sce.b.g,sce.b.h]);
+			// sce.b.j.push([sce.b.g,sce.b.h]);
+			sce.b.j.push(sce.b.g);
+			sce.b.j.push(sce.b.h);
 			// render
 			ren.dot2();
 			ren.ray();
@@ -280,9 +284,10 @@ var sce = {
 			sce.b.g = sce.b.f;
 			sce.b.h = [0,0];
 			sce.b.e = 1;
+			ren.dot1();
 			return;
 		}
-		console.log(sce.b.j);
+		// console.log(sce.b.j);
 	},
 	"pine": function() {
 		// setup a mouse position console
@@ -340,7 +345,7 @@ var ren = {
 		sce.b.c.con.moveTo(sce.b.g[0],sce.b.g[1]);
 		sce.b.c.con.lineTo(sce.b.h[0],sce.b.h[1]);
 		sce.b.c.con.stroke();
-		// sce.b.c.con.ClosePath();
+		sce.b.c.con.closePath();
 	}
 }
    // dom
