@@ -251,6 +251,7 @@ var sce = {
 		if (sce.b.e == 0) {
 			sce.b.g = sce.b.f;
 			sce.b.e = 1;
+			// sce.b.j.push(sce.b.g);
 			// ren.dot();
 			ren.dot1();
 			return;
@@ -270,9 +271,9 @@ var sce = {
 				}
 			}
 			sce.b.h = sce.b.f;
-			// sce.b.j.push([sce.b.g,sce.b.h]);
-			sce.b.j.push(sce.b.g);
-			sce.b.j.push(sce.b.h);
+			sce.b.j.push([sce.b.g,sce.b.h]);
+			// sce.b.j.push(sce.b.g);
+			// sce.b.j.push(sce.b.h);
 			// render
 			ren.dot2();
 			ren.ray();
@@ -284,6 +285,7 @@ var sce = {
 			sce.b.g = sce.b.f;
 			sce.b.h = [0,0];
 			sce.b.e = 1;
+			// sce.b.j.push(sce.b.g);
 			ren.dot1();
 			return;
 		}
