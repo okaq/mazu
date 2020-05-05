@@ -269,6 +269,10 @@ var sce = {
 			}
 			sce.b.h = sce.b.f;
 			sce.b.j.push([sce.b.g,sce.b.h]);
+			// render
+			ren.dot2();
+			ren.ray();
+			// update new
 			sce.b.g = sce.b.h;
 			sce.b.h = [0,0];
 		}
@@ -321,6 +325,22 @@ var ren = {
 		sce.b.c.con.beginPath();
 		sce.b.c.con.arc(sce.b.g[0],sce.b.g[1],2,0,2*Math.PI);
 		sce.b.c.con.fill();
+	},
+	"dot2": function() {
+		sce.b.c.con.fillStyle = rgba.css([0,255,0,1.0]);
+		sce.b.c.con.beginPath();
+		sce.b.c.con.arc(sce.b.h[0],sce.b.h[1],2,0,2*Math.PI);
+		sce.b.c.con.fill();
+	},
+	"ray": function() {
+		// sce.b.c.con.fillStyle = rgba.css([0,255,0,1.0]);
+		sce.b.c.con.beginPath();
+		sce.b.c.con.strokeStyle = rgba.css([0,255,0,1.0]);
+		sce.b.c.con.lineWidth = 2;
+		sce.b.c.con.moveTo(sce.b.g[0],sce.b.g[1]);
+		sce.b.c.con.lineTo(sce.b.h[0],sce.b.h[1]);
+		sce.b.c.con.stroke();
+		// sce.b.c.con.ClosePath();
 	}
 }
    // dom
