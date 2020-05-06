@@ -163,7 +163,12 @@ var sce = {
 	"click": function(e) {
 		console.log(e);
 		// save, detach handlers on pane
+		sce.b.c.can.removeEventListener("dblclick", sce.click3);
+		sce.b.c.can.removeEventListener("click", sce.click5);
 		console.log(sce.b.j);
+		// json string
+		sce.b.k = JSON.stringify(sce.b.j);
+		console.log(sce.b.k);
 	},
 	"click2": function(e) {
 		console.log(e);
