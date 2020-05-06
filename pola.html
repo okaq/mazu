@@ -94,6 +94,11 @@ var g = {
 		console.log("vector art draw web tool");
 		console.log("created by aq@okaq.com");
 		console.log(Date().toString()); // local time
+	},
+	"save": function() {
+		console.log("data set obtained with line segment count: " + sce.b.j.length);
+		console.log("sending to server");
+		// net.save();
 	}
 }
 // xhr
@@ -169,6 +174,7 @@ var sce = {
 		// json string
 		sce.b.k = JSON.stringify(sce.b.j);
 		console.log(sce.b.k);
+		window.setTimeout(g.save, 1000);
 	},
 	"click2": function(e) {
 		console.log(e);
