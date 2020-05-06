@@ -40,8 +40,15 @@ func SaveHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Printf("Read %d bytes\n", len(b0))
 	// prompt for name
+	fmt.Printf("Input file name to save: \n")
+	var filename string
+	fmt.Scanln(&filename)
+	s0 := fmt.Sprintf("%s/%s.txt", SAVE, filename)
 	// save to disk
+	fmt.Printf("saving %s to disk\n", s0)
+	ioutil.WriteFile(s0, b0, 0644)
 	// respond with file name
+	w.Write([]byte(s0))
 }
 
 func main() {

@@ -134,7 +134,7 @@ var net = {
 		window.fetch(net.a[1], req)
 			.then((res) => {
 				console.log("server response recieved. parsing text");
-				return res.txt();
+				return res.text();
 			})
 			.then((txt) => {
 				console.log("file saved");
