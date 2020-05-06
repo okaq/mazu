@@ -126,7 +126,20 @@ var net = {
 			})
 	},
 	"save": function() {
-		
+		// request
+		var req = {};
+		req["body"] = sce.b.k;
+		req["method"] = "POST";
+		console.log("sending to server");
+		window.fetch(net.a[1], req)
+			.then((res) => {
+				console.log("server response recieved. parsing text");
+				return res.txt();
+			})
+			.then((txt) => {
+				console.log("file saved");
+				console.log(txt);
+			})
 	}
 }
 // scene
