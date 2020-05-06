@@ -98,7 +98,7 @@ var g = {
 	"save": function() {
 		console.log("data set obtained with line segment count: " + sce.b.j.length);
 		console.log("sending to server");
-		// net.save();
+		net.save();
 	}
 }
 // xhr
@@ -124,6 +124,9 @@ var net = {
 				g.ping2 = txt;
 				g.start5();
 			})
+	},
+	"save": function() {
+		
 	}
 }
 // scene

@@ -5,12 +5,14 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"time"
 )
 
 const (
 	INDEX = "pola.html"
+	SAVE = "qola"
 )
 
 func motd() {
@@ -30,10 +32,23 @@ func PingHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(fmt.Sprintf("%d", t0)))
 }
 
+func SaveHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)
+	b0, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Printf("Read %d bytes\n", len(b0))
+	// prompt for name
+	// save to disk
+	// respond with file name
+}
+
 func main() {
 	motd()
 	http.HandleFunc("/", PolaHandler)
 	http.HandleFunc("/a", PingHandler)
+	http.HandleFunc("/b", SaveHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
