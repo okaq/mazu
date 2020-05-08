@@ -12,9 +12,13 @@ qola.test = [[[87,110],[280,116]],[[280,116],[319,126]],[[319,126],[78,286]],[[7
 
 class Sparc {
 	constructor() {
-		this.x = 0;
+		this.x = (Math.random() * Number.MAX_SAFE_INTEGER) >>> 0;
 		console.log("new Sparc created!");
 		console.log(this.x);
+	}
+	init() {
+		// check three js
+		console.log(THREE);
 	}
 }
 
@@ -22,6 +26,7 @@ class Sparc {
 	console.log(qola.test.length);
 	let s = new Sparc();
 	console.log(s.x);
+	window.setTimeout(e => s.init(), 1000);
 })();
 
 
