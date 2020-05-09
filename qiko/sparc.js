@@ -24,6 +24,8 @@ class Sparc {
 		sce.init();
 		sce.ren();
 		sce.cam();
+		sce.scene();
+		geo.proc();
 	}
 }
 
@@ -73,9 +75,45 @@ const sce = {
 		sce.c.b.push(sce.c.a);
 		sce.c.c = new THREE.PerspectiveCamera(sce.c.a[0],sce.c.a[1],sce.c.a[2],sce.c.a[3]);
 		console.log(sce.c.c);
+	},
+	scene() {
+		// set up the scene graph
+		sce.d = {};
+		sce.d.a = new THREE.Scene();
+	},
+	line() {
+		// material, geometry and line objects
 	}
 };
 
+// geometry
+const geo = {
+	proc() {
+		// input from pola vector art
+		// as a flat array of line segments
+		geo.a = {};
+		for (const k0 in qola) {
+			console.log(k0);
+			// console.log(qola[k0].length);
+			geo.a[k0] = [];
+			let q0 = qola[k0];
+			for (let i = 0; i < q0.length; i++) {
+				// console.log(q0[i]);
+				// point pairs [[x0,y0],[x1,y1]]
+				let q1 = q0[i];
+				// convert to a three js line segment
+				let q2 = q1[0]; // start point
+				let q3 = q1[1]; // end point
+				// z = 0 for all points in z,y coordinate plane
+				let v0 = new THREE.Vector3(q2[0],q2[1],0);
+				let v1 = new THREE.Vector3(q3[0],q3[1],0);
+				geo.a[k0].push([v0,v1]);
+			}
+		}
+	}
+}
+
+// color
 const rgb = {
 	rand() {
 		let f0 = (Math.random * 0xffffff) >>> 0;
@@ -86,7 +124,7 @@ const rgb = {
 	css() {
 		let b0 = rgb.rc();
 		let s0 = "rgb(" + b0.join(",") + ")";
-		return s0;
+		return new THREE.Color(s0);
 	},
 	rb() {
 		return (Math.random() * 255) >>> 0;
