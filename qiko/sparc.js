@@ -22,6 +22,8 @@ class Sparc {
 		// check three js
 		console.log(THREE);
 		sce.init();
+		sce.ren();
+		sce.cam();
 	}
 }
 
@@ -46,6 +48,28 @@ const sce = {
 		c0.can.style.top = r0[3] + "px";
 		c0.can.style.left = r0[2] + "px";
 		return c0;
+	},
+	ren() {
+		sce.b.d = new THREE.WebGLRenderer({canvas:sce.b.c.can});
+	},
+	cam() {
+		// setup camera
+		sce.c = {};
+		// settings
+		sce.c.a = [];
+		// history buffer
+		sce.c.b = [];
+		// POV
+		sce.c.a[0] = 75.0;
+		// aspect ratio
+		sce.c.a[1] = 1920.0 / 1080.0;
+		// near plane
+		sce.c.a[2] = 0.1;
+		// far plane
+		sce.c.a[3] = 1001.0;
+		sce.c.b.push(sce.c.a);
+		sce.c.c = new THREE.PerspectiveCamera(sce.c.a[0],sce.c.a[1],sce.c.a[2],sce.c.a[3]);
+		console.log(sce.c.c);
 	}
 };
 
