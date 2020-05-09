@@ -26,6 +26,7 @@ class Sparc {
 		sce.cam();
 		sce.scene();
 		geo.proc();
+		geo.line();
 	}
 }
 
@@ -109,6 +110,19 @@ const geo = {
 				let v1 = new THREE.Vector3(q3[0],q3[1],0);
 				geo.a[k0].push([v0,v1]);
 			}
+		}
+	},
+	line() {
+		// buffer geometry, materials and line objects
+		// from the pola vector art data line segments
+		geo.b = {};
+		// line basic materials
+		geo.b.a = {};
+		// line geometry from points
+		geo.b.b = {};
+		// line objects
+		geo.b.c = {};
+		for (const k0 in geo.a) {
 		}
 	}
 }
