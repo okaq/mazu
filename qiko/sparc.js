@@ -51,6 +51,9 @@ const sce = {
 	},
 	ren() {
 		sce.b.d = new THREE.WebGLRenderer({canvas:sce.b.c.can});
+		// sce.b.d.setClearColor(new THREE.Color(0x123456));
+		sce.b.d.setClearColor(rgb.css());
+		sce.b.d.clearColor();
 	},
 	cam() {
 		// setup camera
@@ -70,6 +73,26 @@ const sce = {
 		sce.c.b.push(sce.c.a);
 		sce.c.c = new THREE.PerspectiveCamera(sce.c.a[0],sce.c.a[1],sce.c.a[2],sce.c.a[3]);
 		console.log(sce.c.c);
+	}
+};
+
+const rgb = {
+	rand() {
+		let f0 = (Math.random * 0xffffff) >>> 0;
+		let f1 = f0.toString(16);
+		return new THREE.Color(Number(f1));
+		// bug! need a hexadecimal js Number type not hex string
+	},
+	css() {
+		let b0 = rgb.rc();
+		let s0 = "rgb(" + b0.join(",") + ")";
+		return s0;
+	},
+	rb() {
+		return (Math.random() * 255) >>> 0;
+	},
+	rc() {
+		return [rgb.rb(),rgb.rb(),rgb.rb()];
 	}
 };
 
