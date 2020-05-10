@@ -29,6 +29,18 @@ class Sparc {
 		geo.line();
 		sce.scene2();
 	}
+	seq() {
+		this.tick = 0;
+		this.id = window.setInterval(this.frame, 1000);
+	}
+	frame() {
+		console.log("tick count: " + this.tick);
+		if (this.tick >= sce.e.length) {
+			console.log("anim done.");
+			window.clearInterval(this.id);
+		}
+		this.tick = this.tick + 1;
+	}
 }
 
 // scene and DOM 
@@ -177,6 +189,7 @@ const rgb = {
 	let s = new Sparc();
 	console.log(s.x);
 	window.setTimeout(e => s.init(), 1000);
+	window.setTimeout(e => s.seq(), 4000);
 })();
 
 
