@@ -27,6 +27,7 @@ class Sparc {
 		sce.scene();
 		geo.proc();
 		geo.line();
+		sce.scene2();
 	}
 }
 
@@ -84,6 +85,19 @@ const sce = {
 	},
 	line() {
 		// material, geometry and line objects
+	},
+	scene2() {
+		// reserve sce.d.a as a blank canvas
+		sce.e = {};
+		for (const k0 in geo.b.c) {
+			sce.e[k0] = new THREE.Scene();
+			// add each line to scene
+			for (let i = 0; i < geo.b.c[k0].length; i++) {
+				sce.e[k0].add(sce.b.c[k0][i]);
+			}
+		}
+		// we can use dedicated methods for add / remove
+		// object3d collections in group
 	}
 };
 
