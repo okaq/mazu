@@ -33,13 +33,14 @@ class Sparc {
 		this.tick = 0;
 		this.id = window.setInterval(this.frame, 1000);
 	}
-	frame() {
-		console.log("tick count: " + this.tick);
-		if (this.tick >= sce.e.length) {
+	frame(sce) {
+		console.log("tick count: " + s.tick);
+		console.log(sce.e.length);
+		if (s.tick >= sce.e.length) {
 			console.log("anim done.");
-			window.clearInterval(this.id);
+			window.clearInterval(s.id);
 		}
-		this.tick = this.tick + 1;
+		s.tick = s.tick + 1;
 	}
 }
 
@@ -105,7 +106,7 @@ const sce = {
 			sce.e[k0] = new THREE.Scene();
 			// add each line to scene
 			for (let i = 0; i < geo.b.c[k0].length; i++) {
-				sce.e[k0].add(sce.b.c[k0][i]);
+				sce.e[k0].add(geo.b.c[k0][i]);
 			}
 		}
 		// we can use dedicated methods for add / remove
@@ -154,9 +155,9 @@ const geo = {
 			geo.b.b[k0] = [];
 			geo.b.c[k0] = [];
 			for (let i = 0; i < p0.length; i++) {
-				geo.b.a[k0][i] = new THREE.LineBasicMaterial({Color:0xff0000});
+				geo.b.a[k0][i] = new THREE.LineBasicMaterial({color:0x00ff00});
 				geo.b.b[k0][i] = new THREE.BufferGeometry().setFromPoints(p0[i]);
-				geo.b.c[k0][i] = new THREE.Line(geo.b.b[k0][i], geo.b.s[k0][i]);
+				geo.b.c[k0][i] = new THREE.Line(geo.b.b[k0][i], geo.b.a[k0][i]);
 			}
 
 		}
@@ -188,6 +189,7 @@ const rgb = {
 	console.log(qola.test.length);
 	let s = new Sparc();
 	console.log(s.x);
+	window.s = s;
 	window.setTimeout(e => s.init(), 1000);
 	window.setTimeout(e => s.seq(), 4000);
 })();
