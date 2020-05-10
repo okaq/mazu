@@ -31,16 +31,16 @@ class Sparc {
 	}
 	seq() {
 		this.tick = 0;
-		this.id = window.setInterval(this.frame, 1000);
+		this.id = window.setInterval(this.frame.bind(this), 1000);
 	}
-	frame(sce) {
-		console.log("tick count: " + s.tick);
-		console.log(sce.e.length);
-		if (s.tick >= sce.e.length) {
+	frame() {
+		console.log("tick count: " + this.tick);
+		// console.log(this.sce.e);
+		if (this.tick >= this.sce.f.length) {
 			console.log("anim done.");
-			window.clearInterval(s.id);
+			window.clearInterval(this.id);
 		}
-		s.tick = s.tick + 1;
+		this.tick = this.tick + 1;
 	}
 }
 
@@ -102,7 +102,10 @@ const sce = {
 	scene2() {
 		// reserve sce.d.a as a blank canvas
 		sce.e = {};
+		// keys
+		sce.f = [];
 		for (const k0 in geo.b.c) {
+			sce.f.push(k0);
 			sce.e[k0] = new THREE.Scene();
 			// add each line to scene
 			for (let i = 0; i < geo.b.c[k0].length; i++) {
@@ -189,7 +192,8 @@ const rgb = {
 	console.log(qola.test.length);
 	let s = new Sparc();
 	console.log(s.x);
-	window.s = s;
+	s.sce = sce;
+	// window.s = s;
 	window.setTimeout(e => s.init(), 1000);
 	window.setTimeout(e => s.seq(), 4000);
 })();
