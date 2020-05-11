@@ -36,10 +36,13 @@ class Sparc {
 	frame() {
 		console.log("tick count: " + this.tick);
 		// console.log(this.sce.e);
-		if (this.tick >= this.sce.f.length) {
+		if (this.tick >= sce.f.length) {
 			console.log("anim done.");
 			window.clearInterval(this.id);
+			return;
 		}
+		let k0 = sce.f[this.tick];
+		sce.b.d.render(sce.e[k0], sce.c.c);
 		this.tick = this.tick + 1;
 	}
 }
@@ -89,6 +92,8 @@ const sce = {
 		sce.c.a[3] = 1001.0;
 		sce.c.b.push(sce.c.a);
 		sce.c.c = new THREE.PerspectiveCamera(sce.c.a[0],sce.c.a[1],sce.c.a[2],sce.c.a[3]);
+		sce.c.c.position.set(0,0,-1000);
+		sce.c.c.lookAt(0,0,1000);
 		console.log(sce.c.c);
 	},
 	scene() {
@@ -192,7 +197,7 @@ const rgb = {
 	console.log(qola.test.length);
 	let s = new Sparc();
 	console.log(s.x);
-	s.sce = sce;
+	// s.sce = sce;
 	// window.s = s;
 	window.setTimeout(e => s.init(), 1000);
 	window.setTimeout(e => s.seq(), 4000);
