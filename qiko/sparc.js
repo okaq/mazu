@@ -172,6 +172,13 @@ const geo = {
 	}
 }
 
+// matrix library
+class Mat {
+	constructor() {
+		console.log("okaq matrix lib v0.1");
+	}
+}
+
 // color
 const rgb = {
 	rand() {
@@ -201,6 +208,7 @@ const rgb = {
 	// window.s = s;
 	window.setTimeout(e => s.init(), 1000);
 	window.setTimeout(e => s.seq(), 4000);
+	let m = new Mat();
 })();
 
 
