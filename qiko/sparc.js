@@ -89,12 +89,14 @@ const sce = {
 		// near plane
 		sce.c.a[2] = 0.1;
 		// far plane
-		sce.c.a[3] = 1001.0;
+		sce.c.a[3] = 2001.0;
 		sce.c.b.push(sce.c.a);
 		sce.c.c = new THREE.PerspectiveCamera(sce.c.a[0],sce.c.a[1],sce.c.a[2],sce.c.a[3]);
-		sce.c.c.position.set(0,0,-1000);
+		sce.c.c.position.set(0,750,-1000);
 		sce.c.c.lookAt(0,0,1000);
 		console.log(sce.c.c);
+		// perspective for viewing planes distortion
+		// consider orthographic next go
 	},
 	scene() {
 		// set up the scene graph
@@ -141,8 +143,15 @@ const geo = {
 				let q2 = q1[0]; // start point
 				let q3 = q1[1]; // end point
 				// z = 0 for all points in z,y coordinate plane
-				let v0 = new THREE.Vector3(q2[0],q2[1],0);
-				let v1 = new THREE.Vector3(q3[0],q3[1],0);
+				// let v0 = new THREE.Vector3(q2[0],q2[1],0);
+				// let v1 = new THREE.Vector3(q3[0],q3[1],0);
+				// invert y since canvas 2D is top down
+				let x0 = q2[0];
+				let y0 = 1024 - q2[1];
+				let x1 = q3[0];
+				let y1 = 1024 - q3[1];
+				let v0 = new THREE.Vector3(x0,y0,0);
+				let v1 = new THREE.Vector3(x1,y1,0);
 				geo.a[k0].push([v0,v1]);
 			}
 		}
