@@ -253,15 +253,31 @@ const rgb = {
 	}
 };
 
+class Font {
+	constructor() {
+		console.log("th1n font render test. 2D ortho proj");
+		this.data = geo2.proc(th1n);
+	}
+}
+
+const geo2 = {
+	proc(data) {
+		// generalized geometry processor
+		// create threejs geometry objects from pola vector data
+	}
+}
+
 (function() {
 	console.log(qola.test.length);
 	let s = new Sparc();
 	console.log(s.x);
 	// s.sce = sce;
 	// window.s = s;
-	window.setTimeout(e => s.init(), 1000);
-	window.setTimeout(e => s.seq(), 4000);
+	// window.setTimeout(e => s.init(), 1000);
+	// window.setTimeout(e => s.seq(), 4000);
 	let m = new Mat();
+	// font test, orthographic projection
+	lef f = new Font();
 })();
 
 
