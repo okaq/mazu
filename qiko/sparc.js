@@ -260,8 +260,29 @@ class Font {
 		this.geo = this.data[0];
 		this.keys = this.data[1];
 		console.log(this.keys);
+		// new scene, camera
+	}
+	init() {
+		sce2.init();
+		sce2.cam();
 	}
 }
+
+const sce2 = {
+	init() {
+		sce2.a = document.getElementById("alpha");
+		// full screen canvas
+		sce2.b = {};
+		sce2.b.r = [1920,1080,0,0];
+		sce2.b.c = sce.dom(sce2.b.r);
+		// attach
+		sce2.a.appendChild(sce2.b.c.can);
+	},
+	cam() {
+		// setup ortho cam
+		sce2.c = {};
+	}
+};
 
 const geo2 = {
 	proc(data) {
@@ -288,6 +309,7 @@ const geo2 = {
 	let m = new Mat();
 	// font test, orthographic projection
 	let f = new Font();
+	widow.setTimeout(e => f.init(), 1000);
 })();
 
 
