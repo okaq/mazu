@@ -281,6 +281,7 @@ const sce2 = {
 	cam() {
 		// setup ortho cam
 		sce2.c = {};
+		sce2.c.c = new THREE.OrthographicCamera(0,1920,1080,0,-1000,1000);
 	}
 };
 
