@@ -315,8 +315,21 @@ const geo2 = {
 		return [a,b];
 	},
 	vec(d0) {
+		let r0 = [];
 		for (let i = 0; i < d0.length; i++) {
+			let d1 = d0[i];
+			let d2 = d1[0];
+			let d3 = d1[1];
+			let x0 = d2[0];
+			let y0 = 1024 - d2[1];
+			let x1 = d3[0];
+			let y1 = 1024 - d3[1];
+			let v0 = new THREE.Vector3(x0,y0,0);
+			let v1 = new THREE.Vector3(x1,y1,0);
+			r0.push([v0,v1]);
+			// r0.push(v0,v1);
 		}
+		return r0;
 	},
 	flat(d0) {
 		// flatten an array of points
