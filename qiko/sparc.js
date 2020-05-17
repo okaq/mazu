@@ -282,6 +282,20 @@ const sce2 = {
 		// setup ortho cam
 		sce2.c = {};
 		sce2.c.c = new THREE.OrthographicCamera(0,1920,1080,0,-1000,1000);
+	},
+	scene() {
+		// one scene per glyph
+		sce2.d = [];
+		// keys list
+		// sce2.e = [];
+		for (const k0 in f.keys) {
+			// scene object
+			sce2.d[i] = {};
+			sce2.d[i].a = k0;
+			sce2.d[i].b = new THREE.Scene();
+			// add geometry
+		}
+
 	}
 };
 
