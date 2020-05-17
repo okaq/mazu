@@ -265,6 +265,8 @@ class Font {
 	init() {
 		sce2.init();
 		sce2.cam();
+		sce2.scene();
+		sce2.line();
 	}
 }
 
@@ -285,17 +287,53 @@ const sce2 = {
 	},
 	scene() {
 		// one scene per glyph
-		sce2.d = [];
+		// sce2.d = [];
+		sce2.d = {};
 		// keys list
 		// sce2.e = [];
 		for (const k0 in f.keys) {
 			// scene object
-			sce2.d[i] = {};
-			sce2.d[i].a = k0;
-			sce2.d[i].b = new THREE.Scene();
+			// sce2.d[i] = {};
+			// sce2.d[i].a = k0;
+			// sce2.d[i].b = new THREE.Scene();
+			sce2.d[k0] = {};
+			sce2.d[k0].a = k0;
+			sce2.d[k0].b = new THREE.Scene();
 			// add geometry
 		}
 
+	},
+	line() {
+		for (const k0 in f.keys) {
+			let g0 = f.geo[k0]
+			// material
+			sce2.d[k0].c = sce2.mat(g0);
+			// geometry
+			sce2.d[k0].d = sce2.geo(g0);
+			// line objects
+			sce2.d[k0].e = sce2.low(k0, g0);
+		}
+	},
+	mat(g0) {
+		let r0 = [];
+		for (let i = 0; i < g0.length; i++) {
+			r0[i] = new THREE.LineBasicMaterial({color:0x00ff00});
+		}
+		return r0;
+	},
+	geo(g0) {
+		let r0 = [];
+		for (let i = 0; i < g0.length; i++) {
+			r0[i] = new THREE.BufferGeometry().setFromPoints(g0[i]);
+		}
+		return r0;
+	},
+	low(k0, g0) {
+		let r0 = [];
+		for (let i = 0; i < g0.length; i++) {
+			r0[i] = new THREE.Line(sce2.d[k0].d[i], sce2.d[k0].c[i]);
+		}
+		return r0;
 	}
 };
 
@@ -310,7 +348,8 @@ const geo2 = {
 			b.push(k0);
 			let d0 = data[k0];
 			let d1 = geo2.vec(d0);
-			a[k0] = geo2.flat(d1);
+			a[k0] = d1;
+			// a[k0] = geo2.flat(d1);
 		}
 		return [a,b];
 	},
