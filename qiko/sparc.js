@@ -308,8 +308,18 @@ const geo2 = {
 		for (const k0 in data) {
 			a[k0] = [];
 			b.push(k0);
+			let d0 = data[k0];
+			let d1 = geo2.vec(d0);
+			a[k0] = geo2.flat(d1);
 		}
 		return [a,b];
+	},
+	vec(d0) {
+		for (let i = 0; i < d0.length; i++) {
+		}
+	},
+	flat(d0) {
+		// flatten an array of points
 	}
 };
 
@@ -324,7 +334,7 @@ const geo2 = {
 	let m = new Mat();
 	// font test, orthographic projection
 	let f = new Font();
-	widow.setTimeout(e => f.init(), 1000);
+	window.setTimeout(e => f.init(), 1000);
 })();
 
 
