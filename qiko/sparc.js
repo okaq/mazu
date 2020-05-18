@@ -268,6 +268,22 @@ class Font {
 		sce2.scene();
 		sce2.line();
 		sce2.pop();
+
+		// loop
+		this.tick = 0;
+		window.setTimeout(e => this.seq(), 1000);
+	}
+	seq() {
+		this.id = window.setInterval(this.frame.bind(this), 1000);
+	}
+	frame() {
+		console.log("tick count: " + this.tick);
+		if (this.tick >= this.keys.length) {
+			console.log("anim done");
+			window.clearInterval(this.id);
+			return;
+		}
+		this.tick++;
 	}
 }
 
