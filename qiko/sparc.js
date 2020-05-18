@@ -264,6 +264,7 @@ class Font {
 	}
 	init() {
 		sce2.init();
+		sce2.ren();
 		sce2.cam();
 		sce2.scene();
 		sce2.line();
@@ -283,6 +284,8 @@ class Font {
 			window.clearInterval(this.id);
 			return;
 		}
+		let k0 = this.keys[this.tick];
+
 		this.tick++;
 	}
 }
@@ -296,6 +299,11 @@ const sce2 = {
 		sce2.b.c = sce.dom(sce2.b.r);
 		// attach
 		sce2.a.appendChild(sce2.b.c.can);
+	},
+	ren() {
+		sce2.e = new THREE.WebGLRenderer({canvas:sce2.b.c.can});
+		sce2.e.setClearColor(0x000000);
+		sce2.e.clearColor();
 	},
 	cam() {
 		// setup ortho cam
