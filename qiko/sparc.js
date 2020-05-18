@@ -267,6 +267,7 @@ class Font {
 		sce2.cam();
 		sce2.scene();
 		sce2.line();
+		sce2.pop();
 	}
 }
 
@@ -334,6 +335,11 @@ const sce2 = {
 			r0[i] = new THREE.Line(sce2.d[k0].d[i], sce2.d[k0].c[i]);
 		}
 		return r0;
+	},
+	pop() {
+		for (const k0 in sce2.d) {
+			sce2.d[k0].b.add(sce2.d[k0].e);
+		}
 	}
 };
 
