@@ -74,6 +74,15 @@ const grid = {
 		// cells within cells interlinked
 		grid.b = [];
 		for (let i = 0; i < grid.a.nt; i++) {
+			grid.b[i] = {};
+			let x0 = i % grid.a.px;
+			let y0 = (i / grid.a.py) >>> 0;
+			let x1 = (x0 * grid.a.px) >>> 0;
+			let y1 = (y0 * grid.a.py) >>> 0;
+			grid.b[i].x = x1;
+			grid.b[i].y = y1;
+			// matrix scale
+			// matrix translate
 		}
 	}
 };
