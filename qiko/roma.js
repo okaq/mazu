@@ -57,12 +57,24 @@ const dom = {
 // grid
 const grid = {
 	init() {
+		// dimensions
 		grid.a = {};
 		grid.a.px = 32;
 		grid.a.py = 32;
 		grid.a.w = 1920;
 		grid.a.h = 1080;
+		grid.a.nx = (grid.a.w / grid.a.px) >>> 0;
+		grid.a.ny = (grid.a.h / grid.a.py) >>> 0;
+		grid.a.nt = (grid.a.nx * grid.a.ny) >>> 0;
 		console.log(grid.a);
+
+		grid.cell();
+	},
+	cell() { 
+		// cells within cells interlinked
+		grid.b = [];
+		for (let i = 0; i < grid.a.nt; i++) {
+		}
 	}
 };
 
