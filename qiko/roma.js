@@ -46,5 +46,41 @@ th1n.X = [[[196,239],[312,798]],[[312,798],[522,552]],[[522,552],[676,779]],[[67
 th1n.Y = [[[196,124],[198,227]],[[198,227],[789,764]],[[789,764],[794,862]],[[809,108],[810,216]],[[810,216],[217,757]],[[217,757],[222,853]]];
 th1n.Z = [[[202,92],[201,253]],[[201,253],[508,481]],[[508,481],[825,229]],[[825,229],[823,108]],[[507,486],[502,850]]];
 
+// DOM
+const dom = {
+	init() {
+		dom.a = document.getElementById("alpha");
+		console.log(dom.a);
+	}
+};
 
+// grid
+const grid = {
+	init() {
+		grid.a = {};
+		grid.a.px = 32;
+		grid.a.py = 32;
+		grid.a.w = 1920;
+		grid.a.h = 1080;
+		console.log(grid.a);
+	}
+};
+
+// scene
+var sce = {
+	init() {
+		// full screen webgl
+		sce.a = {};
+		sce.a.r = [1920,1080,0,0];
+		console.log(sce.a);
+	}
+};
+
+// main
+(function() {
+	console.log("hello main!");
+	// grid, proc, scene, dom, rgba, ren, geom
+	subs = [dom, grid, sce];
+	subs.forEach(el => el.init());
+})();
 
