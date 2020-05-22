@@ -97,11 +97,26 @@ const sce = {
 		sce.a = {};
 		sce.a.r = [1920,1080,0,0];
 		console.log(sce.a);
+		// init ren and cam
+		sce.ren();
+		sce.cam();
+	}
+	ren() {
+		sce.b = new THREE.WebGLRenderer({canvas:sce.a.c.can});
+		sce.b.setClearColor(0x000000);
+		sce.b.clearColor();
+	}
+	cam() {
+		// orthographic perspective
+		sce.c = new THREE.OrthographicCamera(0,1920,1080,0,-1000,1000);
 	}
 };
 
 // vector data processor
 const geo = {
+	init() {
+		geo.a = geo.proc(th1n);
+	}
 	proc(data) {
 		// threejs vectors
 		let a = {};
