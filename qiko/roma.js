@@ -51,6 +51,24 @@ const dom = {
 	init() {
 		dom.a = document.getElementById("alpha");
 		console.log(dom.a);
+	},
+	canvas(r0) {
+		let c0 = {};
+		
+		c0.can = document.createElement("canvas");
+		c0.can.width = r0[0];
+		c0.can.height = r0[1];
+		c0.can.style.position = "absolute";
+		c0.can.style.top = r0[3] + "px";
+		c0.can.style.left = r0[2] + "px";
+		
+		return c0;
+	},
+	add(c0) {
+		dom.a.appendChild(c0.can);
+	},
+	remove(c0) {
+		dom.a.removeChild(c0.can);
 	}
 };
 
@@ -96,16 +114,20 @@ const sce = {
 		// full screen webgl
 		sce.a = {};
 		sce.a.r = [1920,1080,0,0];
+		sce.a.c = dom.canvas(sce.a.r);
+		dom.add(sce.a.c);
+	
 		console.log(sce.a);
+		
 		// init ren and cam
 		sce.ren();
 		sce.cam();
-	}
+	},
 	ren() {
 		sce.b = new THREE.WebGLRenderer({canvas:sce.a.c.can});
 		sce.b.setClearColor(0x000000);
 		sce.b.clearColor();
-	}
+	},
 	cam() {
 		// orthographic perspective
 		sce.c = new THREE.OrthographicCamera(0,1920,1080,0,-1000,1000);
@@ -116,7 +138,7 @@ const sce = {
 const geo = {
 	init() {
 		geo.a = geo.proc(th1n);
-	}
+	},
 	proc(data) {
 		// threejs vectors
 		let a = {};
@@ -127,7 +149,7 @@ const geo = {
 			b.push(k0);
 		}
 		return [a,b];
-	}
+	},
 	vec(d0) {
 		let r0 = [];
 		for (let i = 0; i < d0.length; i++) {
