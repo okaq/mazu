@@ -82,7 +82,10 @@ const grid = {
 			grid.b[i].x = x1;
 			grid.b[i].y = y1;
 			// matrix scale
+			let f0 = 32.0 / 1024.0; 
+			// scale factor = 32 / 1024 = 0.03125
 			// matrix translate
+			// translate distance, origin starts at 0,0
 		}
 	}
 };
