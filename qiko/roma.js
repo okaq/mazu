@@ -139,8 +139,18 @@ const sce = {
 		let k0 = geo.a[1][f0];
 		console.log(k0);
 		let g0 = geo.b.c[k0];
+		// any matrix transform operations happen here
+		let f1 = Math.random();
+		console.log(f1);
+		// f1 = 1+f1;
+		let v0 = new THREE.Vector3(f1,f1,f1);
+		// let g1 = g0.scale.set(v0);
 		for (let i = 0; i < g0.length; i++) {
-			sce.d.add(g0[i]);
+			let g1 = g0[i];
+			g1.scale.set(f1,f1,f1);
+			g1.updateMatrix();
+			// sce.d.add(g0[i]);
+			sce.d.add(g1);
 		}
 	}
 };
