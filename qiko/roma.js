@@ -201,6 +201,25 @@ const geo = {
 	}
 };
 
+// anim
+const loop = {
+	seq(e) {
+		console.log("begin animation sequence");
+		loop.tick = 0;
+		loop.id = window.setInterval(loop.frame, 1000);
+	},
+	frame() {
+		console.log("tick count: " + loop.tick);
+		if (loop.tick >= geo.a.b.length) {
+			console.log("anim done");
+			window.clearInterval(loop.id);
+			return;
+		}
+		// pop scene and render
+		loop.tick = loop.tick + 1;
+	}
+};
+
 // main
 (function() {
 	console.log("hello main!");
@@ -208,5 +227,6 @@ const geo = {
 	subs = [dom, grid, sce, geo];
 	subs.forEach(el => el.init());
 	sce.pop();
+	window.setTimeout(e => loop.seq(), 1000);
 })();
 
