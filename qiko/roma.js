@@ -138,6 +138,7 @@ const sce = {
 const geo = {
 	init() {
 		geo.a = geo.proc(th1n);
+		geo.b = geo.line();
 	},
 	proc(data) {
 		// threejs vectors
@@ -166,6 +167,27 @@ const geo = {
 			r0.push([v0,v1]);
 		}
 		return r0;
+	},
+	line() {
+		let b = {};
+		// material
+		b.a = {};
+		// geometry
+		b.b = {};
+		// line
+		b.c = {};
+		for (const k0 in geo.a) {
+			b.a[k0] = [];
+			b.b[k0] = [];
+			b.c[k0] = [];
+			let p0 = geo.a[k0];
+			for (let i = 0; i < p0.length; i++) {
+				b.a[k0][i] = new THREE.LineBasicMaterial({color:0x00ff00});
+				b.b[k0][i] = new THREE.BufferGeometry().setFromPoints(p0[i]);
+				b.c[k0][i] = new THREE.Line(b.b[k0][i], b.c[k0][i]);
+			}
+		}
+		return b;
 	}
 };
 
