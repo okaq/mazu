@@ -131,6 +131,16 @@ const sce = {
 	cam() {
 		// orthographic perspective
 		sce.c = new THREE.OrthographicCamera(0,1920,1080,0,-1000,1000);
+	},
+	pop() {
+		// per frame, add lines to scene and render
+		sce.d = new THREE.Scene();
+		let f0 = (Math.random() * geo.a.b.length) >>> 0;
+		let k0 = geo.a.b[f0];
+		let g0 = geo.b.c[k0];
+		for (let i = 0; i < g0.length; i++) {
+			sce.d.add(g0[i]);
+		}
 	}
 };
 
@@ -176,11 +186,11 @@ const geo = {
 		b.b = {};
 		// line
 		b.c = {};
-		for (const k0 in geo.a) {
+		for (const k0 in geo.a.a) {
 			b.a[k0] = [];
 			b.b[k0] = [];
 			b.c[k0] = [];
-			let p0 = geo.a[k0];
+			let p0 = geo.a.a[k0];
 			for (let i = 0; i < p0.length; i++) {
 				b.a[k0][i] = new THREE.LineBasicMaterial({color:0x00ff00});
 				b.b[k0][i] = new THREE.BufferGeometry().setFromPoints(p0[i]);
@@ -197,5 +207,6 @@ const geo = {
 	// grid, proc, scene, dom, rgba, ren, geom
 	subs = [dom, grid, sce, geo];
 	subs.forEach(el => el.init());
+	sce.pop();
 })();
 
