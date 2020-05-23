@@ -135,8 +135,9 @@ const sce = {
 	pop() {
 		// per frame, add lines to scene and render
 		sce.d = new THREE.Scene();
-		let f0 = (Math.random() * geo.a.b.length) >>> 0;
-		let k0 = geo.a.b[f0];
+		let f0 = (Math.random() * geo.a[1].length) >>> 0;
+		let k0 = geo.a[1][f0];
+		console.log(k0);
 		let g0 = geo.b.c[k0];
 		for (let i = 0; i < g0.length; i++) {
 			sce.d.add(g0[i]);
@@ -186,15 +187,15 @@ const geo = {
 		b.b = {};
 		// line
 		b.c = {};
-		for (const k0 in geo.a.a) {
+		for (const k0 in geo.a[0]) {
 			b.a[k0] = [];
 			b.b[k0] = [];
 			b.c[k0] = [];
-			let p0 = geo.a.a[k0];
+			let p0 = geo.a[0][k0];
 			for (let i = 0; i < p0.length; i++) {
 				b.a[k0][i] = new THREE.LineBasicMaterial({color:0x00ff00});
 				b.b[k0][i] = new THREE.BufferGeometry().setFromPoints(p0[i]);
-				b.c[k0][i] = new THREE.Line(b.b[k0][i], b.c[k0][i]);
+				b.c[k0][i] = new THREE.Line(b.b[k0][i], b.a[k0][i]);
 			}
 		}
 		return b;
@@ -210,12 +211,14 @@ const loop = {
 	},
 	frame() {
 		console.log("tick count: " + loop.tick);
-		if (loop.tick >= geo.a.b.length) {
+		if (loop.tick >= geo.a[1].length) {
 			console.log("anim done");
 			window.clearInterval(loop.id);
 			return;
 		}
 		// pop scene and render
+		sce.pop();
+		sce.b.render(sce.d, sce.c);
 		loop.tick = loop.tick + 1;
 	}
 };
