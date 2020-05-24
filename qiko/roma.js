@@ -140,7 +140,16 @@ const grid = {
 		grid.b[i0].a.position.set(grid.b[i0].x,grid.b[i0].y,0);
 		grid.b[i0].a.scale.set(grid.b[i0].s,grid.b[i0].s,grid.b[i0].s);
 		grid.b[i0].a.updateMatrix();
-		sce.d.add(grid.b[i0].a);
+		sce.e.add(grid.b[i0].a);
+	},
+	tab() {
+		let r0 = 0;
+		for (let i = 0; i < grid.b.length; i++) {
+			if (grid.b[i].b == null) {
+				r0 = r0 + 1;
+			}
+		}
+		return r0;
 	}
 };
 
@@ -158,6 +167,9 @@ const sce = {
 		// init ren and cam
 		sce.ren();
 		sce.cam();
+
+		// grid scene
+		sce.e = new THREE.Scene();
 	},
 	ren() {
 		sce.b = new THREE.WebGLRenderer({canvas:sce.a.c.can});
@@ -291,7 +303,10 @@ const loop = {
 		grid.frame();
 		// add scene
 		// render
+		sce.b.render(sce.e, sce.c);
 		// fin cond
+		loop.nils = grid.tab();
+		console.log("null count: " + loop.nils);
 	}
 };
 
