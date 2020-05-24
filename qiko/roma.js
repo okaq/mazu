@@ -113,6 +113,22 @@ const grid = {
 			// scale
 			grid.b[i].s = f0;
 		}
+	},
+	frame() {
+		let k0 = geo.rand();
+		let i0 = loop.dex;
+		grid.b[i0].b = k0;
+		// obtain line segments for glyph from geo.b
+		// create new lines, new group from the data, dont clone references
+		// add to grid 
+		// glyph data from key
+		// length of each array is length of glyph line segments
+		// material
+		let m0 = geo.b.a[k0];
+		// geometry
+		let g0 = geo.b.b[k0];
+		// line
+		let d0 = geo.b.c[k0];
 	}
 };
 
@@ -222,6 +238,11 @@ const geo = {
 			}
 		}
 		return b;
+	},
+	rand() {
+		let f0 = (Math.random() * geo.a[1].length) >>> 0;
+		let k0 = geo.a[1][f0];
+		return k0;
 	}
 };
 
@@ -247,11 +268,15 @@ const loop = {
 	cell(e) {
 		console.log("begin grid cell animation");
 		loop.fin = false;
+		loop.nils = 1980;
+		loop.dex = null;
 		loop.grid = window.setInterval(loop.frame2, 1000);
 	},
 	frame2() {
-		let f0 = (Math.random() * grid.a.nt) >>> 0;
-		console.log("grid pick: " + f0);
+		loop.dex = (Math.random() * grid.a.nt) >>> 0;
+		// console.log("grid pick: " + f0);
+		// create grid line object
+		grid.frame();
 		// add scene
 		// render
 		// fin cond
