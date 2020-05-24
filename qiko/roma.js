@@ -104,6 +104,14 @@ const grid = {
 			// scale factor = 32 / 1024 = 0.03125
 			// matrix translate
 			// translate distance, origin starts at 0,0
+			
+			// line object
+			grid.b[i].a = null;
+			// glyph char
+			grid.b[i].b = null;
+			// position is set via x,y
+			// scale
+			grid.b[i].s = f0;
 		}
 	}
 };
@@ -256,7 +264,8 @@ const loop = {
 	// grid, proc, scene, dom, rgba, ren, geom
 	subs = [dom, grid, sce, geo];
 	subs.forEach(el => el.init());
-	sce.pop();
-	window.setTimeout(e => loop.seq(), 1000);
+	// sce.pop();
+	// window.setTimeout(e => loop.seq(), 1000);
+	window.setTimeout(e => loop.cell(e), 1000);
 })();
 
