@@ -142,12 +142,17 @@ const sce = {
 		// any matrix transform operations happen here
 		let f1 = Math.random();
 		console.log(f1);
+		let x0 = (Math.random() * 1024) >>> 0;
+		let y0 = (Math.random() * 256) >>> 0;
+		console.log(x0,y0);
 		// f1 = 1+f1;
 		let v0 = new THREE.Vector3(f1,f1,f1);
 		// let g1 = g0.scale.set(v0);
 		for (let i = 0; i < g0.length; i++) {
 			let g1 = g0[i];
-			g1.scale.set(f1,f1,f1);
+			// g1.scale.set(f1,f1,f1);
+			g1.scale.set(1/32,1/32,1/32);
+			g1.position.set(x0,y0,0);
 			g1.updateMatrix();
 			// sce.d.add(g0[i]);
 			sce.d.add(g1);
@@ -230,6 +235,18 @@ const loop = {
 		sce.pop();
 		sce.b.render(sce.d, sce.c);
 		loop.tick = loop.tick + 1;
+	},
+	cell(e) {
+		console.log("begin grid cell animation");
+		loop.fin = false;
+		loop.grid = window.setInterval(loop.frame2, 1000);
+	},
+	frame2() {
+		let f0 = (Math.random() * grid.a.nt) >>> 0;
+		console.log("grid pick: " + f0);
+		// add scene
+		// render
+		// fin cond
 	}
 };
 
