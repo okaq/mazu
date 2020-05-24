@@ -129,6 +129,18 @@ const grid = {
 		let g0 = geo.b.b[k0];
 		// line
 		let d0 = geo.b.c[k0];
+		let g1 = new THREE.Group();
+		for (let i = 0; i < d0.length; i++) {
+			let d1 = new THREE.Line(g0[i], m0[i]);
+			g1.add(d1);
+		}
+		// check if in scene
+		grid.b[i0].a = g1;
+		// transform
+		grid.b[i0].a.position.set(grid.b[i0].x,grid.b[i0].y,0);
+		grid.b[i0].a.scale.set(grid.b[i0].s,grid.b[i0].s,grid.b[i0].s);
+		grid.b[i0].a.updateMatrix();
+		sce.d.add(grid.b[i0].a);
 	}
 };
 
