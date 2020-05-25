@@ -18,6 +18,9 @@ sato - text draw from pola vector art data
 tabi = "travels" (jp)
 tabi - shapes and mohr
 
+joruri/ code art tools
+yumi - favicon encoder
+
 
 
 
