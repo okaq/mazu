@@ -93,8 +93,8 @@ const grid = {
 		grid.b = [];
 		for (let i = 0; i < grid.a.nt; i++) {
 			grid.b[i] = {};
-			let x0 = i % grid.a.px;
-			let y0 = (i / grid.a.py) >>> 0;
+			let x0 = i % grid.a.nx;
+			let y0 = (i / grid.a.nx) >>> 0;
 			let x1 = (x0 * grid.a.px) >>> 0;
 			let y1 = (y0 * grid.a.py) >>> 0;
 			grid.b[i].x = x1;
@@ -117,6 +117,10 @@ const grid = {
 	frame() {
 		let k0 = geo.rand();
 		let i0 = loop.dex;
+		// refresh
+		if (grid.b[i0].b != null) {
+			sce.e.remove(grid.b[i0].a);
+		}
 		grid.b[i0].b = k0;
 		// obtain line segments for glyph from geo.b
 		// create new lines, new group from the data, dont clone references
@@ -137,8 +141,9 @@ const grid = {
 		// check if in scene
 		grid.b[i0].a = g1;
 		// transform
-		grid.b[i0].a.position.set(grid.b[i0].x,grid.b[i0].y,0);
 		grid.b[i0].a.scale.set(grid.b[i0].s,grid.b[i0].s,grid.b[i0].s);
+		grid.b[i0].a.position.set(grid.b[i0].x,grid.b[i0].y,0);
+		// grid.b[i0].a.scale.set(grid.b[i0].s,grid.b[i0].s,grid.b[i0].s);
 		grid.b[i0].a.updateMatrix();
 		sce.e.add(grid.b[i0].a);
 	},
@@ -294,7 +299,7 @@ const loop = {
 		loop.fin = false;
 		loop.nils = 1980;
 		loop.dex = null;
-		loop.grid = window.setInterval(loop.frame2, 1000);
+		loop.grid = window.setInterval(loop.frame2, 60);
 	},
 	frame2() {
 		loop.dex = (Math.random() * grid.a.nt) >>> 0;
@@ -307,6 +312,11 @@ const loop = {
 		// fin cond
 		loop.nils = grid.tab();
 		console.log("null count: " + loop.nils);
+		if (loop.nils <= 600) {
+			console.log("grid anim complete.");
+			window.clearInterval(loop.grid);
+			return;
+		}
 	}
 };
 
