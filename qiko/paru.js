@@ -7,7 +7,7 @@ console.log(new Date().toString());
 const mohr = {};
 
 // dom
-const dom {
+const dom = {
 	init() {
 		dom.a = document.getElementById("alpha");
 		console.log(dom.a);
@@ -33,7 +33,7 @@ const dom {
 };
 
 // scene
-const scene {
+const sce = {
 	init() {
 		// full screen hd
 		sce.a = {};
@@ -52,7 +52,7 @@ const scene {
 }
 
 // anim
-const loop {
+const loop = {
 	seq() {
 		console.log("start sequence");
 	}
@@ -127,6 +127,32 @@ const geo = {
 		let f0 = (Math.random() * geo.a[1].length) >>> 0;
 		let k0 = geo.a[1][f0];
 		return k0;
+	}
+};
+
+// angle
+const rad = {
+	polar(x,y) {
+		// cartesian to polar transform
+		let r0 = [];
+		let r1 = Math.sqrt(x*x + y*y);
+		let th0 = Math.atan2(y,x);
+		r0[0] = r1;
+		r0[1] = th0;
+
+		return r0;
+	},
+	cart(r0,th0) {
+		// input polar, output carto
+		let r0 = [];
+		let x0 = Math.cos(th0);
+		x0 = x0 * r0;
+		let y0 = Math.sin(th0);
+		y0 = y0 * r0;
+		r0[0] = x0;
+		r0[1] = y0;
+
+		return r0;
 	}
 };
 
