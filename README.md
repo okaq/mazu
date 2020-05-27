@@ -21,6 +21,8 @@ tabi - shapes and mohr
 joruri/ code art tools
 yumi - favicon encoder
 
+created qola_bkup for previous vector art assets
+
 
 
 
