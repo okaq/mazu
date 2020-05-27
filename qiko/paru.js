@@ -32,6 +32,25 @@ const dom {
 	}
 };
 
+// scene
+const scene {
+	init() {
+		// full screen hd
+		sce.a = {};
+		sce.a.r = [1920,1080,0,0];
+		sce.a.c = dom.canvas(sce.a.r);
+		dom.add(sce.a.c);
+		// threejs scene
+		sce.b = new THREE.Scene();
+		// orthographic perspective
+		sce.c = new THREE.OrthographicCamera(0,1920,1080,0,-1000,1000);
+		// renderer
+		sce.d = new THREE.WebGLRenderer({canvas:sce.a.c.can});
+		sce.d.setClearColor(0x000000);
+		sce.d.clearColor();
+	}
+}
+
 // anim
 const loop {
 	seq() {
@@ -42,7 +61,7 @@ const loop {
 // main
 (function() {
 	console.log("starting routine");
-	subs = [dom];
+	subs = [dom,sce];
 	subs.forEach(el => el.init());
 	window.setTimeout(e => loop.seq(e), 1000);
 })();
