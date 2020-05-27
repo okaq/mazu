@@ -144,15 +144,15 @@ const rad = {
 	},
 	cart(r0,th0) {
 		// input polar, output carto
-		let r0 = [];
+		let r1 = [];
 		let x0 = Math.cos(th0);
 		x0 = x0 * r0;
 		let y0 = Math.sin(th0);
 		y0 = y0 * r0;
-		r0[0] = x0;
-		r0[1] = y0;
+		r1[0] = x0;
+		r1[1] = y0;
 
-		return r0;
+		return r1;
 	}
 };
 
