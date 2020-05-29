@@ -252,10 +252,38 @@ const rad = {
 	}
 };
 
+// bitmap
+const bit = {
+	init() {
+		// names list
+		bit.a = ["th1n",
+			"symbol",
+			"alchemy",
+			"mohr"
+		];
+		// class list
+		bit.b = [th1n,
+			symbol,
+			alchemy,
+			mohr
+		];
+		// keys
+		bit.c = {};
+		for (let i = 0; i < bit.a.length; i++) {
+			let k0 = bit.a[i];
+			bit.c[k0] = [];
+			for (let j = 0; j < bit.b.length; j++) {
+				
+			}
+
+		}
+	}
+};
+
 // main
 (function() {
 	console.log("starting routine");
-	subs = [dom,sce,geo];
+	subs = [dom,sce,geo,bit];
 	subs.forEach(el => el.init());
 	window.setTimeout(e => loop.seq(e), 1000);
 })();
