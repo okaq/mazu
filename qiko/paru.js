@@ -272,11 +272,14 @@ const bit = {
 		for (let i = 0; i < bit.a.length; i++) {
 			let k0 = bit.a[i];
 			bit.c[k0] = [];
-			for (let j = 0; j < bit.b.length; j++) {
-				
+			let c0 = bit.b[i];
+			console.log(c0.constructor.name);
+			// refactor as lists with set index
+			for (const k1 in c0) {
+				bit.c[k0].push(k1);
 			}
-
 		}
+		console.log(bit.c);
 	}
 };
 
