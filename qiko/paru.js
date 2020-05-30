@@ -312,6 +312,22 @@ const bit = {
 			r0.push([v0,v1]);
 		}
 		return r0;
+	},
+	line(k0,k1) {
+		// input class, key ("th1n","A")
+		// putput three js group for line segments
+		let i0 = bit.a.indexOf(k0);
+		let j0 = bit.c[i0].indexOf(k1);
+		let d0 = bit.d[i0][j0];
+		// three js line object
+		let g0 = new THREE.Group();
+		for (let i = 0; i < d0.length; i++) {
+			let mat0 = new THREE.LineBasicMaterial({color:0x00ff00});
+			let buf0 = new THREE.BufferGeometry().setFromPoints(d0[i]);
+			let line0 = new THREE.Line(buf0, mat0);
+			g0.add(line0);
+		}
+		return g0;
 	}
 };
 
