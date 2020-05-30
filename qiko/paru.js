@@ -268,18 +268,40 @@ const bit = {
 			mohr
 		];
 		// keys
-		bit.c = {};
+		bit.c = [];
 		for (let i = 0; i < bit.a.length; i++) {
 			let k0 = bit.a[i];
-			bit.c[k0] = [];
+			bit.c[i] = [];
 			let c0 = bit.b[i];
 			console.log(c0.constructor.name);
 			// refactor as lists with set index
 			for (const k1 in c0) {
-				bit.c[k0].push(k1);
+				bit.c[i].push(k1);
 			}
 		}
 		console.log(bit.c);
+		// data 
+		bit.d = [];
+	},
+	proc() {
+		// threejs vector3 line segments
+		// loop over class
+		// inner loop over bitmap
+		for (let i = 0; i < bit.b.length; i++) {
+			let c0 = bit.b[i];
+			let k0 = bit.c[i];
+			for (let j = 0; j < k0.length; j++) {
+				// method to get points array, triple depth
+				bit.d[i][j] = bit.vec(c0[k0]);
+			}
+		}
+	},
+	vec(d0) {
+		let r0 = [];
+		for (let i = 0; i < d0.length; i++) {
+			// triple depth line segments points array
+		}
+		return r0;
 	}
 };
 
