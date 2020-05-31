@@ -151,6 +151,8 @@ const sce = {
 const loop = {
 	seq() {
 		console.log("start sequence");
+		console.log("gen layout");
+		lay.gen();
 	}
 };
 
@@ -330,6 +332,23 @@ const bit = {
 		return g0;
 	}
 };
+
+// layout
+const lay = {
+	gen() {
+		// config for bitmap elements
+		// definitions for shape generators
+	}
+};
+
+// shapes
+const cube = {
+	tri(d0) {
+		// shape generator
+		// input radius of inscribed circle
+		// uses polar coordinate transfrom
+	}
+}
 
 // main
 (function() {
