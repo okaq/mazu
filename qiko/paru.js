@@ -338,6 +338,18 @@ const lay = {
 	gen() {
 		// config for bitmap elements
 		// definitions for shape generators
+
+		// logical screen
+		lay.a = [];
+		// element zero is the mohr face
+		lay.a[0] = [];
+		lay.a[0][0] = "mohr";
+		lay.a[0][1] = "man";
+		lay.a[0][2] = [512,512];
+		lay.a[0][3] = [0,0];
+		lay.a[0][4] = 0;
+
+		// entity: class, sub, size, position, state
 	}
 };
 
