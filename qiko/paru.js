@@ -377,8 +377,83 @@ const cube = {
 			v0.push(v1);
 		}
 		return v0;
+	},
+	square(d0) {
+		let v0 = [];
+		let n0 = 4;
+		let t0 = Math.PI * 2 / n0;
+		for (let i = 0; i < n0; i++) {
+			let t1 = t0 * i;
+			let p0 = rad.cart(d0, t1);
+			// translate to 1024 x 1024 center pane
+			let x0 = p0[0] + 512;
+			let y0 = p0[1] + 512;
+			let v1 = new THREE.Vector3(x0,y0,0);
+			v0.push(v1);
+		}
+		return v0;
+	},
+	pent(d0) {
+		let v0 = [];
+		let n0 = 5;
+		let t0 = Math.PI * 2 / n0;
+		for (let i = 0; i < n0; i++) {
+			let t1 = t0 * i;
+			let p0 = rad.cart(d0, t1);
+			// translate to 1024 x 1024 center pane
+			let x0 = p0[0] + 512;
+			let y0 = p0[1] + 512;
+			let v1 = new THREE.Vector3(x0,y0,0);
+			v0.push(v1);
+		}
+		return v0;
+	},
+	hex(d0) {
+		let v0 = [];
+		let n0 = 6;
+		let t0 = Math.PI * 2 / n0;
+		for (let i = 0; i < n0; i++) {
+			let t1 = t0 * i;
+			let p0 = rad.cart(d0, t1);
+			// translate to 1024 x 1024 center pane
+			let x0 = p0[0] + 512;
+			let y0 = p0[1] + 512;
+			let v1 = new THREE.Vector3(x0,y0,0);
+			v0.push(v1);
+		}
+		return v0;
+	},
+	sept(d0) {
+		let v0 = [];
+		let n0 = 7;
+		let t0 = Math.PI * 2 / n0;
+		for (let i = 0; i < n0; i++) {
+			let t1 = t0 * i;
+			let p0 = rad.cart(d0, t1);
+			// translate to 1024 x 1024 center pane
+			let x0 = p0[0] + 512;
+			let y0 = p0[1] + 512;
+			let v1 = new THREE.Vector3(x0,y0,0);
+			v0.push(v1);
+		}
+		return v0;
+	},
+	oct(d0) {
+		let v0 = [];
+		let n0 = 5;
+		let t0 = Math.PI * 2 / n0;
+		for (let i = 0; i < n0; i++) {
+			let t1 = t0 * i;
+			let p0 = rad.cart(d0, t1);
+			// translate to 1024 x 1024 center pane
+			let x0 = p0[0] + 512;
+			let y0 = p0[1] + 512;
+			let v1 = new THREE.Vector3(x0,y0,0);
+			v0.push(v1);
+		}
+		return v0;
 	}
-}
+};
 
 // main
 (function() {
