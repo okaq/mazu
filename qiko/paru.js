@@ -350,6 +350,11 @@ const lay = {
 		lay.a[0][4] = 0;
 
 		// entity: class, sub, size, position, state
+	},
+	proc() {
+		// procedural content
+		// random selection from the collection
+		// random shapes form cube
 	}
 };
 
@@ -359,6 +364,19 @@ const cube = {
 		// shape generator
 		// input radius of inscribed circle
 		// uses polar coordinate transfrom
+		let v0 = [];
+		let n0 = 3;
+		let t0 = Math.PI * 2 / n0;
+		for (let i = 0; i < n0; i++) {
+			let t1 = t0 * i;
+			let p0 = rad.cart(d0, t1);
+			// translate to 1024 x 1024 center pane
+			let x0 = p0[0] + 512;
+			let y0 = p0[1] + 512;
+			let v1 = new THREE.Vector3(x0,y0,0);
+			v0.push(v1);
+		}
+		return v0;
 	}
 }
 
