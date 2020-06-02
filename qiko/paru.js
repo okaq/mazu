@@ -153,6 +153,25 @@ const loop = {
 		console.log("start sequence");
 		console.log("gen layout");
 		lay.gen();
+	},
+	seq2() {
+		console.log("test render all entities");
+		loop.tick = 0;
+		loop.max = 99;
+		// lay.gen();
+		loop.id = window.setInterval(loop.frame2, 1000);
+	},
+	frame2() {
+		console.log("tick count: " + loop.tick);
+		if (loop.tick >= loop.max) {
+			console.log("seq done");
+			window.clearInterval(loop.id);
+			return;
+		}
+		// new scene
+		// populate with entity, no transform
+		// render to screen
+		loop.tick = loop.tick + 1;
 	}
 };
 
@@ -275,7 +294,7 @@ const bit = {
 			let k0 = bit.a[i];
 			bit.c[i] = [];
 			let c0 = bit.b[i];
-			console.log(c0.constructor.name);
+			// console.log(c0.constructor.name);
 			// refactor as lists with set index
 			for (const k1 in c0) {
 				bit.c[i].push(k1);
@@ -440,7 +459,7 @@ const cube = {
 	},
 	oct(d0) {
 		let v0 = [];
-		let n0 = 5;
+		let n0 = 8;
 		let t0 = Math.PI * 2 / n0;
 		for (let i = 0; i < n0; i++) {
 			let t1 = t0 * i;
@@ -460,5 +479,7 @@ const cube = {
 	console.log("starting routine");
 	subs = [dom,sce,geo,bit];
 	subs.forEach(el => el.init());
-	window.setTimeout(e => loop.seq(e), 1000);
+	// window.setTimeout(e => loop.seq(e), 1000);
+	// test loop seq over all entities
+	window.setTimeout(e => loop.seq2(e), 1000);
 })();
