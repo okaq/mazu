@@ -159,6 +159,7 @@ const loop = {
 		loop.tick = 0;
 		// loop.max = 99;
 		// lay.gen();
+		bit.proc();
 		lay.db();
 		lay.fish();
 		loop.max = lay.d.length;
@@ -181,6 +182,9 @@ const loop = {
 		console.log("index i = " + i0 + " j = " + j0);
 		let line0 = bit.d[i0][j0].length;
 		console.log("line segments length: " + line0);
+		console.log("creating geometry group");
+		let g0 = bit.line2(i0, j0);
+		console.log(g0);
 		loop.tick = loop.tick + 1;
 	}
 };
@@ -319,14 +323,17 @@ const bit = {
 		// loop over class
 		// inner loop over bitmap
 		for (let i = 0; i < bit.b.length; i++) {
+			bit.d[i] = [];
 			let c0 = bit.b[i];
 			let k0 = bit.c[i];
-			let c1 = c0[k0];
-			for (let j = 0; j < c1.length; j++) {
+			// let c1 = c0[k0];
+			for (let j = 0; j < k0.length; j++) {
 				// method to get points array, triple depth
-				bit.d[i][j] = bit.vec(c1[j]);
+				let k1 = k0[j];
+				bit.d[i][j] = bit.vec(c0[k1]);
 			}
 		}
+		console.log(bit.d);
 	},
 	vec(d0) {
 		let r0 = [];
