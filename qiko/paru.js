@@ -159,6 +159,7 @@ const loop = {
 		loop.tick = 0;
 		loop.max = 99;
 		// lay.gen();
+		lay.db();
 		loop.id = window.setInterval(loop.frame2, 1000);
 	},
 	frame2() {
@@ -374,6 +375,23 @@ const lay = {
 		// procedural content
 		// random selection from the collection
 		// random shapes form cube
+	},
+	db() {
+		// master brain data base
+		// holds keys, geometry, state, history
+		lay.b = {};
+		lay.c = [];
+		// lay.d = [];
+		for (let i = 0; i < bit.c.length; i++) {
+			let k0 = bit.a[i];
+			for (let j = 0; j < bit.c[i].length; j++) {
+				let k1 = bit.c[i][j];
+				let k2 = k0 + "." + k1;
+				lay.b[k2] = {};
+				lay.c.push(k2);
+			}
+		}
+		console.log(lay.c);
 	}
 };
 
