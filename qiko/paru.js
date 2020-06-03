@@ -157,10 +157,11 @@ const loop = {
 	seq2() {
 		console.log("test render all entities");
 		loop.tick = 0;
-		loop.max = 99;
+		// loop.max = 99;
 		// lay.gen();
 		lay.db();
 		lay.fish();
+		loop.max = lay.d.length;
 		loop.id = window.setInterval(loop.frame2, 1000);
 	},
 	frame2() {
@@ -173,6 +174,13 @@ const loop = {
 		// new scene
 		// populate with entity, no transform
 		// render to screen
+		console.log("picking glyph: " + lay.d[loop.tick]);
+		let k0 = lay.d[loop.tick];
+		let i0 = lay.b[k0].i;
+		let j0 = lay.b[k0].j;
+		console.log("index i = " + i0 + " j = " + j0);
+		let line0 = bit.d[i0][j0].length;
+		console.log("line segments length: " + line0);
 		loop.tick = loop.tick + 1;
 	}
 };
@@ -313,9 +321,10 @@ const bit = {
 		for (let i = 0; i < bit.b.length; i++) {
 			let c0 = bit.b[i];
 			let k0 = bit.c[i];
-			for (let j = 0; j < k0.length; j++) {
+			let c1 = c0[k0];
+			for (let j = 0; j < c1.length; j++) {
 				// method to get points array, triple depth
-				bit.d[i][j] = bit.vec(c0[k0]);
+				bit.d[i][j] = bit.vec(c1[j]);
 			}
 		}
 	},
@@ -390,6 +399,10 @@ const lay = {
 				let k2 = k0 + "." + k1;
 				lay.b[k2] = {};
 				lay.c.push(k2);
+				lay.b[k2].i = i;
+				lay.b[k2].j = j;
+				lay.b[k2].p = [448,26];
+				lay.b[k2].s = 1.0;
 			}
 		}
 		console.log(lay.c);
