@@ -360,7 +360,22 @@ const bit = {
 			g0.add(line0);
 		}
 		return g0;
+	},
+	line2(i0,j0) {
+		// input class, indicies
+		// putput three js group for line segments
+		let d0 = bit.d[i0][j0];
+		// three js line object
+		let g0 = new THREE.Group();
+		for (let i = 0; i < d0.length; i++) {
+			let mat0 = new THREE.LineBasicMaterial({color:0x00ff00});
+			let buf0 = new THREE.BufferGeometry().setFromPoints(d0[i]);
+			let line0 = new THREE.Line(buf0, mat0);
+			g0.add(line0);
+		}
+		return g0;
 	}
+
 };
 
 // layout
