@@ -160,6 +160,7 @@ const loop = {
 		loop.max = 99;
 		// lay.gen();
 		lay.db();
+		lay.fish();
 		loop.id = window.setInterval(loop.frame2, 1000);
 	},
 	frame2() {
@@ -392,6 +393,19 @@ const lay = {
 			}
 		}
 		console.log(lay.c);
+	},
+	fish() {
+		// shuffle keys for random render test
+		lay.d = [...lay.c];
+		for (let i = 0; i < lay.d.length; i++) {
+			let i0 = lay.d.length - (i + 0);
+			let i1 = (Math.random() * i0) >>> 0;
+			let i2 = i + i1;
+			let t0 = lay.d[i];
+			lay.d[i] = lay.d[i2];
+			lay.d[i2] = t0;
+		}
+		console.log(lay.d);
 	}
 };
 
