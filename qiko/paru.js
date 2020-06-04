@@ -144,6 +144,12 @@ const sce = {
 		sce.d = new THREE.WebGLRenderer({canvas:sce.a.c.can});
 		sce.d.setClearColor(0x000000);
 		sce.d.clearColor();
+	},
+	pop(g0) {
+		sce.b = new THREE.Scene();
+		g0.position.set(448,28,0);
+		sce.b.add(g0);
+		sce.d.render(sce.b, sce.c);
 	}
 }
 
@@ -185,6 +191,9 @@ const loop = {
 		console.log("creating geometry group");
 		let g0 = bit.line2(i0, j0);
 		console.log(g0);
+		// add to new scene and render
+		sce.pop(g0);
+
 		loop.tick = loop.tick + 1;
 	}
 };
