@@ -27,7 +27,7 @@ func UlonHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	motd()
 	http.HandleFunc("/", UlonHandler)
-	http.Handle("/qiko", http.StripPrefix("/qiko", http.FileServer(http.Dir(QIKO))))
+	http.Handle("/qiko/", http.StripPrefix("/qiko/", http.FileServer(http.Dir(QIKO))))
 	http.ListenAndServe(":8080", nil)
 }
 
