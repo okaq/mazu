@@ -54,6 +54,33 @@ const loop = {
 	}
 };
 
+// angles
+const rad = {
+	polar(x,y) {
+		// cart to polar
+		let r0 = [];
+
+		let r1 = Math.sqrt(x*x + y*y);
+		let th0 = Math.atan2(x,y);
+		r0[0] = r1;
+		r0[1] = th0;
+
+		return r0;
+	},
+	cart(r0,th0) {
+		let r1 = [];
+
+		let x0 = Math.cos(th0);
+		x0 = x0 * r0;
+		let y0 = Math.sin(th0);
+		y0 = y0 * r0;
+		r1[0] = x0;
+		r1[1] = y0;
+
+		return r1;
+	}
+};
+
 // main
 (function() {
 	console.log("gring oron");
