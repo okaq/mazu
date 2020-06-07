@@ -51,6 +51,7 @@ const dom = {
 const loop = {
 	seq() {
 		console.log("start sequence");
+		poly.gen();
 	}
 };
 
@@ -78,6 +79,29 @@ const rad = {
 		r1[1] = y0;
 
 		return r1;
+	}
+};
+
+// shapes
+const poly = {
+	gen() {
+		// regular polygons inscribed within a circle
+		poly.a = [];
+		let r0 = 512;
+		for (let i = 3; i < 13; i++) {
+			let th0 = Math.PI * 2 / i;
+			let p0 = [];
+			for (let j = 0; j < i; j++) {
+				let th1 = th0 * j;
+				let p1 = rad.cart(r0,th1);
+				let x0 = p1[0] + r0;
+				let y0 = p1[1] + r0;
+				let vec0 = new THREE.Vector3(x0,y0,0);
+				p0.push(vec0);
+			}
+			poly.a.push(p0);
+		}
+		console.log(poly.a);
 	}
 };
 
