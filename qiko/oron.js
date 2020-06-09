@@ -86,9 +86,9 @@ const sce = {
 		sce.e.b[0].a = new THREE.Group();
 		for (let i = 0; i < geo.b[0].c.length; i++) {
 			sce.e.b[0].a.add(geo.b[0].c[i]);
-			sce.e.b[0].b = new THREE.Vector3(448,28,0);
-			sce.e.b[0].c = new THREE.Vector3(0.5,0.5,1);
 		}
+		sce.e.b[0].b = new THREE.Vector3(448,28,0);
+		sce.e.b[0].c = new THREE.Vector3(0.5,0.5,1);
 		// group for font
 		sce.e.c = [];
 		for (let i = 0; i < geo.c.length; i++) {
@@ -96,17 +96,38 @@ const sce = {
 			sce.e.c[i].a = new THREE.Group();
 			for (let j = 0; j < geo.c[i].c.length; j++) {
 				sce.e.c[i].a.add(geo.c[i].c[j]);
-				// translate
-				sce.e.c[i].b = new THREE.Vector3(448,28,0);
-				// scale
-				sce.e.c[i].c = new THREE.Vector3(1,1,1);
 			}
+			// translate
+			sce.e.c[i].b = new THREE.Vector3(448,28,0);
+			// scale
+			sce.e.c[i].c = new THREE.Vector3(1,1,1);
 		}
 
 	},
 	pop() {
 		// pre populate scene objects for all glyphs
 		sce.f = [];
+		// face scene
+		sce.f[0] = new THREE.Scene();
+		sce.e.b[0].a.position.set(sce.e.b[0].b);
+		sce.e.b[0].a.scale.set(sce.e.b[0].c);
+		sce.f[0].add(sce.e.b[0].a);
+		// poly scene
+		for (let i = 0; i < sce.e.a.length; i++) {
+			let s0 = new THREE.Scene();
+			sce.e.a[i].a.position.set(sce.e.a[i].b);
+			sce.e.a[i].a.scale.set(sce.e.a[i].c);
+			s0.add(sce.e.a[i].a);
+			sce.f.push(s0);
+		}
+		// font scene
+		for (let i = 0; i < sce.e.c.length; i++) {
+			let s0 = new THREE.Scene();
+			sce.e.c[i].a.position.set(sce.e.aci].b);
+			sce.e.c[i].a.scale.set(sce.e.c[i].c);
+			s0.add(sce.e.c[i].a);
+			sce.f.push(s0);
+		}
 	}
 };
 
