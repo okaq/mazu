@@ -203,6 +203,24 @@ const geo = {
 			r0.push([v0,v1]);
 		}
 		return r0;
+	},
+	font() {
+		geo.c = {};
+		geo.d = [];
+		for (const k0 in th1n) {
+			geo.d.push(k0);
+			geo.c[k0] = {};
+			geo.c[k0].a = [];
+			geo.c[k0].b = [];
+			geo.c[k0].c = [];
+			geo.c[k0].d = geo.vec(th1n[k0]);
+			for (let i = 0; i < geo.c[k0].d.length; i++) {
+				geo.c[k0].a[i] = new THREE.LineBasicMaterial({color:0x00ff00});
+				geo.c[k0].b[i] = new THREE.BufferGeometry().setFromPoints(geo.c[k0].d[i]);
+				geo.c[k0].c[i] = new THREE.Line(geo.c[k0].b[i], geo.c[k0].a[i]);
+			}
+		}
+		console.log(geo.c, geo.d);
 	}
 };
 
