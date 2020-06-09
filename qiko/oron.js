@@ -64,6 +64,37 @@ const sce = {
 		sce.d = new THREE.WebGLRenderer({canvas:sce.a.c.can});
 		sce.d.setClearColor(0x000000);
 		sce.d.clearColor();
+	},
+	pine() {
+		// create group objects for all polygon shapes
+		sce.e = {};
+		sce.e.a = [];
+		for (let i = 0; i < geo.a.length; i++) {
+			sce.e.a[i] = {};
+			sce.e.a[i].a = new THREE.Group();
+			for (let j = 0; j < geo.a[i].c.length; j++) {
+				sce.e.a[i].a.add(geo.a[i].c[j]);
+				// translate
+				sce.e.a[i].b = new THREE.Vector3(448,28,0);
+				// scale
+				sce.e.a[i].c = new THREE.Vector3(1,1,1);
+			}
+		}
+		// group for face
+		sce.e.b = [];
+		sce.e.b[0] = {};
+		sce.e.b[0].a = new THREE.Group();
+		for (let i = 0; i < geo.b[0].c.length; i++) {
+			sce.e.b[0].a.add(geo.b[0].c[i]);
+			sce.e.b[0].b = new THREE.Vector3(448,28,0);
+			sce.e.b[0].c = new THREE.Vector3(0.5,0.5,1);
+		}
+		// group for font
+		sce.e.c = [];
+	},
+	pop() {
+		// pre populate scene objects for all glyphs
+		sce.f = [];
 	}
 };
 
@@ -100,6 +131,7 @@ const loop = {
 		poly.gen();
 		geo.poly();
 		geo.face();
+		geo.font();
 	}
 };
 
