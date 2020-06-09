@@ -54,6 +54,8 @@ const loop = {
 	seq() {
 		console.log("start sequence");
 		poly.gen();
+		geo.poly();
+		geo.face();
 	}
 };
 
@@ -104,6 +106,31 @@ const poly = {
 			poly.a.push(p0);
 		}
 		console.log(poly.a);
+	}
+};
+
+// geometry
+const geo = {
+	poly() {
+		geo.a = [];
+		for (let i = 0; i < poly.a.length; i++) {
+			geo.a[i] = {};
+			// line materials
+			geo.a[i].a = [];
+			// buffer geometries
+			geo.a[i].b = [];
+			// line objects
+			geo.a[i].c = [];
+			for (let j = 0; j < poly.a[i].length; j++) {
+				geo.a[i].a[j] = new THREE.LineBasicMaterial({color:0x00ff00});
+				geo.a[i].b[j] = new THREE.BufferGeometry().setFromPoints(poly.a[i][j]);
+				geo.a[i].c[j] = new THREE.Line(geo.a[i].b[j], geo.a[i].a[j]);
+			}
+		}
+		console.log(geo.a);
+	},
+	face() {
+		geo.b = [];
 	}
 };
 
