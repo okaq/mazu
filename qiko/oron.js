@@ -131,6 +131,34 @@ const geo = {
 	},
 	face() {
 		geo.b = [];
+		geo.b[0] = {};
+		geo.b[0].a = [];
+		geo.b[0].b = [];
+		geo.b[0].c = [];
+		geo.b[0].d = geo.vec(marci);
+		for (let i = 0; i < geo.b[0].d.length; i++) {
+			geo.b[0].a[i] = new THREE.LineBasicMaterial({color:0x00ff00});
+			geo.b[0].b[i] = new THREE.BufferGeometry().setFromPoints(geo.b[0].d[i]);
+			geo.b[0].c[i] = new THREE.Line(geo.b[0].b[i], geo.b[0].a[i]);
+		}
+		console.log(geo.b);
+	},
+	vec(d0) {
+		let r0 = [];
+		for (let i = 0; i < d0.length; i++) {
+			// triple depth line segments points array
+			let d1 = d0[i];
+			let d2 = d1[0];
+			let d3 = d1[1];
+			let x0 = d2[0];
+			let y0 = 1024 - d2[1];
+			let x1 = d3[0];
+			let y1 = 1024 - d3[1];
+			let v0 = new THREE.Vector3(x0,y0,0);
+			let v1 = new THREE.Vector3(x1,y1,0);
+			r0.push([v0,v1]);
+		}
+		return r0;
 	}
 };
 
