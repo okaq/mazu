@@ -91,6 +91,18 @@ const sce = {
 		}
 		// group for font
 		sce.e.c = [];
+		for (let i = 0; i < geo.c.length; i++) {
+			sce.e.c[i] = {};
+			sce.e.c[i].a = new THREE.Group();
+			for (let j = 0; j < geo.c[i].c.length; j++) {
+				sce.e.c[i].a.add(geo.c[i].c[j]);
+				// translate
+				sce.e.c[i].b = new THREE.Vector3(448,28,0);
+				// scale
+				sce.e.c[i].c = new THREE.Vector3(1,1,1);
+			}
+		}
+
 	},
 	pop() {
 		// pre populate scene objects for all glyphs
