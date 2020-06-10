@@ -129,6 +129,22 @@ const sce = {
 			s0.add(sce.e.c[i].a);
 			sce.f.push(s0);
 		}
+	},
+	first() {
+		// add face to scene
+		sce.g = new Three.Scene();
+		sce.h = [];
+		sce.h[0] = new THREE.Group();
+	},
+	second() {
+		// concentric shapes
+		sce.h[1] = new THREE.Group();
+	},
+	third() {
+		// add test
+		sce.h[2] = new THREE.Group();
+
+		sce.h.forEach(el => sce.g.add(el));
 	}
 };
 
@@ -182,6 +198,12 @@ const loop = {
 		// add scene and render
 		sce.d.render(sce.f[loop.tick], sce.c);
 		loop.tick = loop.tick + 1;
+	},
+	chip() {
+		console.log("layout frame");
+		sce.first();
+		sce.second();
+		sce.third();
 	}
 };
 
@@ -321,7 +343,8 @@ const geo = {
 	console.log("gring oron");
 	subs = [dom,sce];
 	subs.forEach(el => el.init());
-	window.setTimeout(e => loop.seq(e), 1000);
+	// window.setTimeout(e => loop.seq(e), 1000);
+	loop.chip();
 })();
 
 
