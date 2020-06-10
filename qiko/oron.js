@@ -91,11 +91,12 @@ const sce = {
 		sce.e.b[0].c = new THREE.Vector3(0.5,0.5,1);
 		// group for font
 		sce.e.c = [];
-		for (let i = 0; i < geo.c.length; i++) {
+		for (let i = 0; i < geo.d.length; i++) {
+			let k0 = geo.d[i];
 			sce.e.c[i] = {};
 			sce.e.c[i].a = new THREE.Group();
-			for (let j = 0; j < geo.c[i].c.length; j++) {
-				sce.e.c[i].a.add(geo.c[i].c[j]);
+			for (let j = 0; j < geo.c[k0].c.length; j++) {
+				sce.e.c[i].a.add(geo.c[k0].c[j]);
 			}
 			// translate
 			sce.e.c[i].b = new THREE.Vector3(448,28,0);
@@ -109,22 +110,22 @@ const sce = {
 		sce.f = [];
 		// face scene
 		sce.f[0] = new THREE.Scene();
-		sce.e.b[0].a.position.set(sce.e.b[0].b);
-		sce.e.b[0].a.scale.set(sce.e.b[0].c);
+		// sce.e.b[0].a.position.set(sce.e.b[0].b);
+		// sce.e.b[0].a.scale.set(sce.e.b[0].c);
 		sce.f[0].add(sce.e.b[0].a);
 		// poly scene
 		for (let i = 0; i < sce.e.a.length; i++) {
 			let s0 = new THREE.Scene();
-			sce.e.a[i].a.position.set(sce.e.a[i].b);
-			sce.e.a[i].a.scale.set(sce.e.a[i].c);
+			// sce.e.a[i].a.position.set(sce.e.a[i].b);
+			// sce.e.a[i].a.scale.set(sce.e.a[i].c);
 			s0.add(sce.e.a[i].a);
 			sce.f.push(s0);
 		}
 		// font scene
 		for (let i = 0; i < sce.e.c.length; i++) {
 			let s0 = new THREE.Scene();
-			sce.e.c[i].a.position.set(sce.e.aci].b);
-			sce.e.c[i].a.scale.set(sce.e.c[i].c);
+			// sce.e.c[i].a.position.set(sce.e.c[i].b);
+			// sce.e.c[i].a.scale.set(sce.e.c[i].c);
 			s0.add(sce.e.c[i].a);
 			sce.f.push(s0);
 		}
@@ -165,6 +166,22 @@ const loop = {
 		geo.poly();
 		geo.face();
 		geo.font();
+		sce.pine();
+		sce.pop();
+		loop.tick = 0;
+		loop.max = sce.f.length;
+		loop.id = window.setInterval(loop.frame, 1000);
+	},
+	frame() {
+		console.log("tick count: " + loop.tick);
+		if (loop.tick >= loop.max) {
+			console.log("anim done.");
+			window.clearInterval(loop.id);
+			return;
+		}
+		// add scene and render
+		sce.d.render(sce.f[loop.tick], sce.c);
+		loop.tick = loop.tick + 1;
 	}
 };
 
@@ -200,15 +217,17 @@ const poly = {
 	gen() {
 		// regular polygons inscribed within a circle
 		poly.a = [];
-		let r0 = 512;
+		let r0 = 400;
+		let r1 = 512;
+		// cut off on left edge
 		for (let i = 3; i < 13; i++) {
 			let th0 = Math.PI * 2 / i;
 			let p0 = [];
 			for (let j = 0; j < i; j++) {
 				let th1 = th0 * j;
 				let p1 = rad.cart(r0,th1);
-				let x0 = p1[0] + r0;
-				let y0 = p1[1] + r0;
+				let x0 = p1[0] + r1;
+				let y0 = p1[1] + r1;
 				let vec0 = new THREE.Vector3(x0,y0,0);
 				p0.push(vec0);
 			}
@@ -231,8 +250,16 @@ const geo = {
 			// line objects
 			geo.a[i].c = [];
 			for (let j = 0; j < poly.a[i].length; j++) {
+				let j0 = j - 1;
+				if (j == 0) {
+					j0 = poly.a[i].length - 1;
+				}
+				let v0 = [];
+				v0[0] = poly.a[i][j0];
+				v0[1] = poly.a[i][j];
 				geo.a[i].a[j] = new THREE.LineBasicMaterial({color:0x00ff00});
-				geo.a[i].b[j] = new THREE.BufferGeometry().setFromPoints(poly.a[i][j]);
+				// geo.a[i].b[j] = new THREE.BufferGeometry().setFromPoints([poly.a[i][j-1],poly.a[i][j]]);
+				geo.a[i].b[j] = new THREE.BufferGeometry().setFromPoints(v0);
 				geo.a[i].c[j] = new THREE.Line(geo.a[i].b[j], geo.a[i].a[j]);
 			}
 		}
