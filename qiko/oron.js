@@ -132,9 +132,14 @@ const sce = {
 	},
 	first() {
 		// add face to scene
-		sce.g = new Three.Scene();
+		sce.g = new THREE.Scene();
 		sce.h = [];
 		sce.h[0] = new THREE.Group();
+		for (let i = 0; i < geo.b[0].c.length; i++) {
+			sce.h[0].add(geo.b[0].c[i]);
+		}
+		sce.h[0].position.set(448,64,0);
+		sce.h[0].scale.set(0.62,0.62,1.00);
 	},
 	second() {
 		// concentric shapes
@@ -201,9 +206,14 @@ const loop = {
 	},
 	chip() {
 		console.log("layout frame");
+		poly.gen();
+		geo.poly();
+		geo.face();
+		geo.font();
 		sce.first();
 		sce.second();
 		sce.third();
+		sce.d.render(sce.g, sce.c);
 	}
 };
 
