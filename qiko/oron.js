@@ -156,12 +156,23 @@ const sce = {
 		let g0 = new THREE.Group();
 		let g1 = new THREE.Group();
 		// concentric array of shapes with concentric offsets
+		sce.conc(f0,f2,g0);
+		sce.conc(f1,f3,g1);
+		sce.h[1].add(g0);
+		sce.h[1].add(g1);
 	},
 	third() {
 		// add test
 		sce.h[2] = new THREE.Group();
 
 		sce.h.forEach(el => sce.g.add(el));
+	},
+	conc(i0,n0,g0) {
+		// add concentric shapes to group
+		let s0 = [];
+		for (let i = 0; i < n0; i++) {
+			
+		}
 	}
 };
 
