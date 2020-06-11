@@ -144,6 +144,18 @@ const sce = {
 	second() {
 		// concentric shapes
 		sce.h[1] = new THREE.Group();
+		// pick two random polygons
+		let f0 = (Math.random() * geo.a.length) >>> 0;
+		let f1 = (Math.random() * geo.a.length) >>> 0;
+		console.log(f0,f1);
+		// 1/10 chance of repitition
+		// number of repitiions
+		let f2 = ((Math.random() * 12) + 4) >>> 0;
+		let f3 = ((Math.random() * 8) + 8) >>> 0;
+		// two group children, added to parent group root
+		let g0 = new THREE.Group();
+		let g1 = new THREE.Group();
+		// concentric array of shapes with concentric offsets
 	},
 	third() {
 		// add test
