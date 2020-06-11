@@ -169,9 +169,24 @@ const sce = {
 	},
 	conc(i0,n0,g0) {
 		// add concentric shapes to group
-		let s0 = [];
+		// let g1 = new THREE.Group();
+		// let s0 = geo.a[i0].c;
+		// origin point
+		let x0 = 1024;
+		let y0 = 128;
+		let x1 = (Math.random() * 512) + x0;
+		// random walk factor
+		let f0 = (Math.random() * 32) - 16;
 		for (let i = 0; i < n0; i++) {
-			
+			// lets try clone
+			let g1 = sce.e.a[i0].a.clone();
+			// perturb
+			let f1 = f0 * (i + 1);
+			let x2 = x1 + f2;
+			let y1 = y0 + f2;
+			g1.position.set(x2,y1,0);
+			// g1.rotate
+			g0.add(g1);
 		}
 	}
 };
