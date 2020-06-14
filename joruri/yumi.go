@@ -94,7 +94,9 @@ func Paint() {
     // okaq joruri unki
     // c0 := color.RGBA{245,197,126,255}
     // okaq mazu ulon
-    c0 := color.RGBA{255,255,255,255}
+    // c0 := color.RGBA{255,255,255,255}
+    // okaq 3dtd
+    c0 := color.RGBA{247,247,247,255}
     s0 := Pixels.Bounds().Dx() * Pixels.Bounds().Dy()
 	for i := 0; i < s0; i++ {
 		x0 := i % Pixels.Bounds().Dx()
