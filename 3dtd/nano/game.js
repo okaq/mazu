@@ -10,6 +10,7 @@ const game = {
 		// create logical screen for intro simulator
 		// render intro
 		sce.init();
+		db.pop();
 	}
 };
 
@@ -33,6 +34,16 @@ const sce = {
 		console.log(sce);
 	}
 };
+
+// data
+const db = {
+	pop() {
+		// base
+		db.a = {};
+		// keys
+		db.b = [];
+	}
+}
 
 // main
 (function() {
