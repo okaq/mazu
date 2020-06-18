@@ -55,6 +55,7 @@ const game = {
 		// render intro
 		sce.init();
 		db.pop();
+		geo.font();
 	}
 };
 
@@ -88,6 +89,18 @@ const db = {
 		db.b = [];
 	}
 }
+
+// geometry processor
+const geo = {
+	font() {
+		geo.a = {};
+		geo.b = [];
+		for (const k0 in th1n) {
+			geo.b.push(k0);
+		}
+		console.log(geo.a, geo.b);
+	}
+};
 
 // main
 (function() {
