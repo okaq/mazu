@@ -96,7 +96,15 @@ const geo = {
 		geo.a = {};
 		geo.b = [];
 		for (const k0 in th1n) {
+			geo.a[k0] = new THREE.Group();
 			geo.b.push(k0);
+			let v0 = geo.vec(th1n[k0]);
+			for (let i = 0; i < v0.length; i++) {
+				const mat0 = new THREE.LineBasicMaterial({color:0xffffff});
+				const geo0 = new THREE.BufferGeometry().setFromPoints(v0[i]);
+				const line0 = new THREE.Line(geo0, mat0);
+				geo.a[k0].add(line0);
+			}
 		}
 		console.log(geo.a, geo.b);
 	},
