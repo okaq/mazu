@@ -56,6 +56,7 @@ const game = {
 		sce.init();
 		db.pop();
 		geo.font();
+		db.config();
 	}
 };
 
@@ -87,6 +88,13 @@ const db = {
 		db.a = {};
 		// keys
 		db.b = [];
+	},
+	config() {
+		db.a["screen_intro_0"] = {};
+		db.a["screen_play_0"] = {};
+		db.a["screen_play_1"] = {};
+		db.a["screen_score_0"] = {};
+		db.a["screen_score_1"] = {};
 	}
 }
 
