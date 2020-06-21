@@ -95,6 +95,22 @@ const db = {
 		db.a["screen_play_1"] = {};
 		db.a["screen_score_0"] = {};
 		db.a["screen_score_1"] = {};
+
+		// simple structure for logical screen test
+		// text, size, posisiton
+		db.a["screen_intro_0"].text = "hello";
+		db.a["screen_play_0"].text = "whats news";
+		db.a["screen_play_1"].text = "shall we play a game";
+		db.a["screen_score_0"].text = "high scores";
+		db.a["screen_score_1"].text = "try again";
+
+		db.a["screen_intro_0"] = {};
+		db.a["screen_play_0"] = {};
+		db.a["screen_play_1"] = {};
+		db.a["screen_score_0"] = {};
+		db.a["screen_score_1"] = {};
+
+
 	}
 }
 
