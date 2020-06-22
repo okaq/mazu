@@ -104,11 +104,17 @@ const db = {
 		db.a["screen_score_0"].text = "high scores";
 		db.a["screen_score_1"].text = "try again";
 
-		db.a["screen_intro_0"] = {};
-		db.a["screen_play_0"] = {};
-		db.a["screen_play_1"] = {};
-		db.a["screen_score_0"] = {};
-		db.a["screen_score_1"] = {};
+		db.a["screen_intro_0"].size = 64;
+		db.a["screen_play_0"].size = 64;
+		db.a["screen_play_1"].size = 32;
+		db.a["screen_score_0"].size = 32;
+		db.a["screen_score_1"].size = 32;
+
+		db.a["screen_intro_0"].pos = [0,0];
+		db.a["screen_play_0"].pos = [16,16];
+		db.a["screen_play_1"].pos = [32,32];
+		db.a["screen_score_0"].pos = [128,128];
+		db.a["screen_score_1"].pos = [64,256];
 
 
 	}
