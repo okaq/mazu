@@ -158,6 +158,15 @@ const geo = {
 	}
 };
 
+// clone
+const clone = {
+	group(g0) {
+		// input a threejs group
+		// new copy explicitly from geometry, materials
+		// of individual child elements
+	}
+};
+
 // main
 (function() {
 	console.log("main start");
