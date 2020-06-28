@@ -12,6 +12,7 @@ import (
 
 const (
 	INDEX = "xh2o.html"
+	NANO = "nano/"
 )
 
 var (
@@ -39,6 +40,7 @@ func main() {
 	rando()
 	motd()
 	http.HandleFunc("/", XHandler)
+	http.Handle("/nano/", http.StripPrefix("/nano/", http.FileServer(http.Dir(NANO))))
 	http.ListenAndServe(":8080", nil)
 }
 
