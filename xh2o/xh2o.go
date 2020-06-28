@@ -22,7 +22,7 @@ func rando() {
 	t0 := time.Now().UnixNano()
 	s0 := rand.NewSource(t0)
 	R = rand.New(s0)
-	fmt.Printf("random: %f\n", R.float32())
+	fmt.Printf("random: %f\n", R.Float32())
 }
 
 func motd() {
