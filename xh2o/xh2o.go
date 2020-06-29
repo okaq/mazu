@@ -17,6 +17,7 @@ const (
 
 var (
 	R *rand.Rand
+	C map[string]string
 )
 
 func rando() {
@@ -36,9 +37,17 @@ func XHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w,r,INDEX)
 }
 
+func cache() {
+	C = make(map[string]string)
+	// atomic counter for visitor count
+	// player zero
+	// pretty print cache state response
+}
+
 func main() {
 	rando()
 	motd()
+	cache()
 	http.HandleFunc("/", XHandler)
 	http.Handle("/nano/", http.StripPrefix("/nano/", http.FileServer(http.Dir(NANO))))
 	http.ListenAndServe(":8080", nil)
