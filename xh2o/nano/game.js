@@ -26,6 +26,25 @@ const dom = {
 	}
 };
 
+// scene
+const sce = {
+	init() {
+		sce.a = {};
+		sce.a.r = [1920,1080,0,0];
+		sce.a.c = dom.canvas(sce.a.r);
+		// webgl
+		sce.b = new THREE.Scene();
+		// cam
+		sce.c = new THREE.OrthographicCamera(0,1920,1080,0,-1000,1000);
+		// render
+		sce.d = new THREE.WebGLRenderer({canvas:sce.a.c.can});
+		sce.d.setClearColor(0x808080);
+		sce.d.clearColor();
+		// debug
+		console.log(sce.d.info);
+	}
+};
+
 // anim
 const loop = {
 	ren() {
@@ -36,7 +55,7 @@ const loop = {
 // main
 (function() {
 	console.log("xh2o ready player");
-	subs = [dom];
+	subs = [dom,sce];
 	subs.forEach(el => el.init());
 	loop.ren();
 })();
