@@ -49,8 +49,22 @@ const sce = {
 const loop = {
 	ren() {
 		console.log("loop setup");
+		geo.grid();
 	}
 };	
+
+// geometry
+const geo = {
+	grid(n0, w0, h0) {
+		// vec3 data
+		// evenly spaced square points 
+		n1 = Math.sqrt(n0) >>> 0;
+		w1 = (n1 / w0) >>> 0;
+		h1 = (n1 / h0) >>> 0;
+		console.log(n1, w1, h0);
+		// easier to input grid size and bounds
+	}
+};
 
 // main
 (function() {
