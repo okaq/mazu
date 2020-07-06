@@ -66,6 +66,14 @@ const geo = {
 	}
 };
 
+// buffer
+const buf = {
+	fancy() {
+		// holds gpu data buffer
+		// threejs vao
+	}
+};
+
 // main
 (function() {
 	console.log("xh2o ready player");
