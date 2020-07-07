@@ -63,6 +63,21 @@ const geo = {
 		h1 = (n1 / h0) >>> 0;
 		console.log(n1, w1, h0);
 		// easier to input grid size and bounds
+	},
+	grid2() {
+		// hard coded parameters
+		// screen dimensions
+		w0 = 1920;
+		h0 = 1080;
+		// cell 
+		x0 = 32;
+		y0 = 32;
+		// count
+		nx = (w0 / x0) >>> 0;
+		ny = (h0 / y0) >>> 0;
+		nt = (nx * ny) >>> 0;
+		// data gen
+		grid.a = [];
 	}
 };
 
