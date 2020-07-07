@@ -78,6 +78,16 @@ const geo = {
 		nt = (nx * ny) >>> 0;
 		// data gen
 		grid.a = [];
+		for (let i = 0; i < nt; i++) {
+			x1 = i % nx;
+			y1 = (i / nx) >>> 0;
+			x2 = (x1 * x0) >>> 0;
+			y2 = (y1 * y0) >>> 0;
+			v0 = new THREE.Vector3(x2,y2,0);
+			grid.a.push(v0);
+		}
+		console.log(nx, ny, nt);
+		console.log(grid.a);
 	}
 };
 
