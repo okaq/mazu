@@ -1,6 +1,13 @@
 // motd
 console.log("shall we play a game?");
 
+// data
+const db = {
+	init() {
+		db.a = {};
+	}
+};
+
 // scene
 const sce = {
 	init() {
@@ -50,7 +57,7 @@ const dom = {
 // main
 (function() {
 	console.log("connect seven start screen");
-	subs = [dom,sce];
+	subs = [dom,sce,db];
 	subs.forEach(el => el.init());
 	// loop.start();
 })();
