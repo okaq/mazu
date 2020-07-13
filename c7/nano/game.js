@@ -68,7 +68,20 @@ const geo = {
 // loop
 const loop = {
 	start() {
+		// construct scene
 		loop.tick = 0;
+		loop.max = 16;
+		loop.id = window.setInterval(loop.frame, 1000);
+	},
+	frame() {
+		console.log("tick count: " + loop.tick);
+		if (loop.tick >= loop.max) {
+			console.log("anim done.");
+			window.clearInterval(loop.id);
+			return;
+		}
+		// update & render scene
+		loop.tick = loop.tick + 1;
 	}
 };
 
