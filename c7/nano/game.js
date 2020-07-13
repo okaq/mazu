@@ -54,10 +54,28 @@ const dom = {
 	}
 };
 
+// geometry
+const geo = {
+	init() {
+		// plane grid
+		geo.a = {};
+		geo.a.a = new THREE.PlaneGeometry(1920,1080,1920/32,1080/32);
+		geo.a.b = new THREE.MeshMaterial({color:0x888888,side:THREE.DoubleSide});
+		geo.a.c = new THREE.Mesh(geo.a.a,geo.a.b);
+	}
+};
+
+// loop
+const loop = {
+	start() {
+		loop.tick = 0;
+	}
+};
+
 // main
 (function() {
 	console.log("connect seven start screen");
-	subs = [dom,sce,db];
+	subs = [dom,sce,db,geo];
 	subs.forEach(el => el.init());
-	// loop.start();
+	loop.start();
 })();
