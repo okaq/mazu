@@ -62,6 +62,22 @@ const geo = {
 		geo.a.a = new THREE.PlaneGeometry(1920,1080,1920/32,1080/32);
 		geo.a.b = new THREE.MeshMaterial({color:0x888888,side:THREE.DoubleSide});
 		geo.a.c = new THREE.Mesh(geo.a.a,geo.a.b);
+	},
+	sub() {
+		// sub planes
+		gen.b = {};
+		// metadata
+		gen.b.a = {};
+		gen.b.a.w = 1920;
+		gen.b.a.h = 1080;
+		gen.b.a.px = 32;
+		gen.b.a.py = 32;
+		gen.b.a.nx = (gen.b.a.w / gen.b.a.px) >>> 0;
+		gen.b.a.ny = (gen.b.a.h / gen.b.a.py) >>> 0;
+		gen.b.a.nt = (gen.b.a.nx * gen.b.a.ny) >>> 0;
+		console.log("nx = " + gen.b.a.nx);
+		console.log("ny = " + gen.b.a.ny);
+		console.log("nt = " + gen.b.a.nt);
 	}
 };
 
